@@ -20,23 +20,28 @@
             <a class="logo son"href="http://thegoosesite.github.io"title="Back to the homepage.">The Goose Site</a>
         </li>
         <li class="dad">
-            <a  class="son" title="Sub to @worshiptheholygoose on YT!" href="https://thegoosesite.github.io/youtube">Youtube Channel</a>
+            <a class="son" title="Play goose games..." href="https://thegoosesite.github.io/interactives">Interactives</a>
         </li>
         <li class="dad">
             <a class="son" title="The trinity slideshows..." href="https://thegoosesite.github.io/powerpoint">Slideshows</a>
         </li>
-        <li class="dad">
-            <a class="son" title="The unity videos..." href="https://thegoosesite.github.io/videos">Videos</a>
+        <li style="cursor:pointer;" class="dad dropdown">
+            <a class="son" title="The unity videos...">Videos</a>
+            <ul class="dropdown-content">
+                <li class="space"><a title="Subscribe or die..." href="https://thegoosesite.github.io/youtube">Youtube Channel</a></li>
+                <li><a title="Worship, pray, and repent..." href="https://thegoosesite.github.io/videos">Unity Video Collection</a></li>
+            </ul>
         </li>
         <li class="dad">
             <a class="son" title="Read the Goose Bible..." href="https://thegoosesite.github.io/bible"><u>Bible</u></a>
         </li>
+        <li class="dad" id="logout"><a class="son" title="Voids Session Data" onclick="document.cookie = 'site_access=granted; expires=Thu, 18 Dec 2026 12:00:00 UTC; path=/;';"><img src="https://thegoosesite.github.io/assets/images/signin.png" /><u>Sign Out</u></a></li>
     </ul>
     </nav><br><br><br><br>
     <main>
-        <div style="background-color:white;border:0;border-radius:0;margin:20px;padding:10px;">
+        <div class="search-box">
             <h1 style="text-align:center;">The Goose Search</h1>
-            <input type="text" id="searchInput" class="search-box" placeholder="Search for holy goose pages...">
+            <input type="text" id="searchInput" class="search-engine-input" placeholder="Search for holy goose pages...">
             <ul id="searchResults" class="search-results"></ul>
         </div>
     </main>
