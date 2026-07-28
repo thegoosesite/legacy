@@ -43,48 +43,52 @@ document.addEventListener("DOMContentLoaded", function () {
             keywords: "unity, youtube, channel, videos"
         }
     ];
-    // Get results
+
+    
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    // Get search
-    function performSearch(query){
-    // Escape the previous results
-    searchResults.innerHTML = '';
-    // Clean Query
-    const cleanQuery = query.toLowerCase().trim();
-    // return
-    if (cleanQuery === '') {
-        return; 
-    }
-    // Filter
-    const filteredPages = PAGES.filter(page => {
-    return page.title.toLowerCase().includes(cleanQuery) || 
-        page.content.toLowerCase().includes(cleanQuery) || 
-        page.keywords.toLowerCase().includes(cleanQuery);
-    });
-    // Results
-    if (filteredPages.length === 0) {
-        searchResults.innerHTML = '<li class="no-results">No pages found matching your search.</li>';
-    } else {
-        filteredPages.forEach(page => {
-            const li = document.createElement('li');
-            li.className = 'result-item';
-            
-            // Create standard snippet from content
-            let snippet = page.content;
-            if (snippet.length > 120) {
-                snippet = snippet.substring(0, 120) + '...';
-            }
 
-            li.innerHTML = `
-                <h1><a href="${page.url}">${page.title}</a></h1>
-                <p>${snippet}</p>
-            `;
-            searchResults.appendChild(li);
+
+    function performSearch(query) {
+
+        searchResults.innerHTML = '';
+        
+        const cleanQuery = query.toLowerCase().trim();
+        
+        if (cleanQuery === '') {
+            return; 
+        }
+        
+        const filteredPages = PAGES.filter(page => {
+            return page.title.toLowerCase().includes(cleanQuery) || 
+                   page.content.toLowerCase().includes(cleanQuery) || 
+                   page.keywords.toLowerCase().includes(cleanQuery);
+        });
+        
+        if (filteredPages.length === 0) {
+            searchResults.innerHTML = '<li class="no-results">No pages found matching your search.</li>';
+        } else {
+            filteredPages.forEach(page => {
+                const li = document.createElement('li');
+                li.className = 'result-item';
+                
+                // Create standard snippet from content
+                let snippet = page.content;
+                if (snippet.length > 120) {
+                    snippet = snippet.substring(0, 120) + '...';
+                }
+
+                li.innerHTML = `
+                    <h1><a href="${page.url}">${page.title}</a></h1>
+                    <p>${snippet}</p>
+                `;
+                searchResults.appendChild(li);
+            });
+        }
+    } 
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            performSearch(e.target.value);
         });
     }
-    // Track user types
-    searchInput.addEventListener('input', (e) => {
-        performSearch(e.target.value);
-    });
-});
+}); 
