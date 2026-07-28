@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function performSearch(query) {
-
+        searchResults.style.display="flex";
         searchResults.innerHTML = '';
         
         const cleanQuery = query.toLowerCase().trim();
