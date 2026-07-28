@@ -1,6 +1,6 @@
 .search-engine-input {
     width: 100%;
-    padding: 15px;
+    padding: 7.5px;
     font-size: 16px;
     margin-bottom: 20px;
     box-sizing: border-box;
@@ -15,8 +15,7 @@
     border-radius:5px;
     box-sizing: border-box;
     padding:10px;
-    max-width:65%;
-    width:65% !important;
+    width:75% !important;
 }
 main{
     padding:25%;
@@ -28,6 +27,7 @@ main{
     padding: 15px;
     display:flex;
     flex-direction:column;
+    justify-content: center;
 
 }
 .result-item {
@@ -38,7 +38,7 @@ main{
     border:none;
     border-radius:6px;
     background-color: darkorange;
-    max-width:50%;
+    max-width:55%;
 }
 .titleh1{
     text-align:center;
