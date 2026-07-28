@@ -18,7 +18,6 @@
 .search-results {
     list-style: none;
     padding: 15px;
-    display:flex;
     flex-direction:column;
     justify-content: center;
     text-align: center;
@@ -28,8 +27,6 @@
 .result-item {
     margin-bottom: 15px;
     padding:10px;
-    margin:0 auto;
-    display:inline-block;
     color:white;
     border:none;
     border-radius:6px;
