@@ -1,11 +1,12 @@
 .search-engine-input {
-    width: 75%;
+    width: 100%;
     padding: 15px;
     font-size: 16px;
     margin-bottom: 20px;
     box-sizing: border-box;
     font-family:'Comic Sans MS';
-    border-radius: 16px;
+    border-radius: 20px;
+    margin:0 auto;
 
 }
 .search-box{
@@ -14,11 +15,13 @@
     border-radius:5px;
     box-sizing: border-box;
     padding:10px;
-    max-width:100%;
-    width:100% !important;
+    max-width:65%;
+    width:65% !important;
 }
 main{
-    padding:25% auto;
+    padding:25%;
+    display:flex;
+    justify-content: center;
 }
 .search-results {
     list-style: none;
@@ -35,6 +38,7 @@ main{
     border:none;
     border-radius:6px;
     background-color: darkorange;
+    max-width:50%;
 }
 .titleh1{
     text-align:center;
@@ -53,6 +57,8 @@ main{
 }
 .result-item p {
     font-size: 15px;
+    color:white !important;
+    text-align:left !important
 }
 .no-results {
     color: #888;

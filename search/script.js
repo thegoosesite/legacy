@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             title: "Home Page",
             url: "https://thegoosesite.github.io",
-            content: "Welcome to everyone except Saam! Repent your goosins at St. Duck's Church",
+            content: "Welcome to everyone except Saam! Repent your goosins at St. Duck's Church, view our great bulletin board, and gooseling.",
             keywords: "home, welcome, main, index, goose, goosism, repent, worship"
         },
         {
