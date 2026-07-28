@@ -28,7 +28,8 @@
 .result-item {
     margin-bottom: 15px;
     padding:10px;
-    margin:5px;
+    margin:0 auto;
+    display:inline-block;
     color:white;
     border:none;
     border-radius:6px;
