@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 li.innerHTML = `
-                    <h1><a href="${page.url}">${page.title}</a></h1>
+                    <h2><a href="${page.url}">${page.title}</a></h2>
                     <p>${snippet}</p>
                 `;
                 searchResults.appendChild(li);
