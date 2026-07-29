@@ -27,7 +27,7 @@
 
 }
 .result-item {
-    margin-bottom: 15px;
+    margin: 0 auto 15px auto;
     padding:10px;
     color:white;
     border:none;
