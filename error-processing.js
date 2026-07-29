@@ -44,10 +44,10 @@ const codeNSI = `
           <a class="login-a" href="https://thegoosesite.github.io/pages/welcome">Home</a>
         </li>
         <li class="login-li">
-          <a class="login-a" href="https://thegoosesite.github.io/pages/notice">Notice</a>
+          <a class="login-a" href="https://thegoosesite.github.io/pages/questions">FAQ</a>
         </li>
         <li class="login-li">
-          <a class="login-a" href="https://thegoosesite.github.io/pages/changelog">Release Notes</a>
+          <a class="login-a" href="https://thegoosesite.github.io/pages/repository">Repository</a>
         </li>
         <li class="login-li">
           <a class="login-a" href="mailto:worshiptheholygoose@gmail.com">Contact Us</a>
