@@ -20,14 +20,12 @@
 .search-results {
     list-style: none;
     padding: 15px;
-    flex-direction:column;
-    justify-content: center;
-    text-align: center;
+    margin:0 auto 0 auto;
     display:none;
 
 }
 .result-item {
-    margin: 0 auto 15px auto;
+    margin-bottom: 15px;
     padding:10px;
     color:white;
     border:none;
