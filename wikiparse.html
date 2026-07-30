@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wiki Parsing</title>
+</head>
+<body>
+  <h1>403 Forbbiden</h1>
+    <script>
+        // Function to extract a specific cookie value
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        // Read the target cookie
+        const accessCookie = getCookie('site_access');
+
+        // Target only your specific primary domain for security
+        const targetOrigin = 'https://thegoosewiki.github.io'; 
+
+        // Send the cookie value to the parent window
+        window.parent.postMessage({ site_access: accessCookie }, targetOrigin);
+    </script>
+</body>
+</html>
