@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
       indicator.className = "indicator static";
       ex.style.display = "none";
       return;
-    }
+    } 
 
     if (tokenReadEnc(currentText, 7) === token) { 
       indicator.textContent = "✔";
