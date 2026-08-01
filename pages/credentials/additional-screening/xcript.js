@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return null;
   }
   
-  if (getCookie('site_access') === 'granted' && window.location.pathname !== '/' || !getCookie('need_additional_screening') !== 'true') {
+  if (getCookie('site_access') === 'granted' && window.location.pathname !== '/' || getCookie('need_additional_screening') !== 'true') {
     window.location.href = 'https://thegoosesite.github.io'; 
   }
 });
