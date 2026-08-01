@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (tokenReadEnc(currentText, 7) === token) { 
       indicator.textContent = "✔";
       indicator.className = "indicator correct";
-      setTimeout(() => {
+      setTimeout(() => { //
         document.cookie = "site_access=granted; max-age=" + (60 * 60 * 24 * 7) + "; path=/; SameSite=Strict";
         window.location.href = 'https://thegoosesite.github.io/';
       }, 300);
