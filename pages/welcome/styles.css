@@ -45,6 +45,9 @@
 .correct {
   color: green !important;
 }
+.screening{
+  color:rgb(66, 42, 139)
+}
 .incorrect {
   color: red !important;
 }
@@ -58,4 +61,21 @@
   width:24px;
   height:24px;
   cursor:pointer;
+}
+
+.sq-btn{
+    box-shadow:rgba(0, 0, 0, 0.15);
+    background-color:darkorange;
+    background-image: linear-gradient(to left, orange, darkorange, orangered);
+    color:#333;
+    font-family:'Comic Sans MS';
+    border-radius: 7px;
+    border:none;
+    transition: transform 0.3s ease;
+    font-size:29px;
+    margin:0 auto;
+}
+.sq-btn:hover{
+    background-image:linear-gradient(to right, orange, darkorange, orangered);
+    transform:scale(1.2);
 }

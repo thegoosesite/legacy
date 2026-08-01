@@ -69,7 +69,18 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = 'https://thegoosesite.github.io/';
       }, 300);
       ex.style.display = "none";
+    else if (tokenReadEnc(currentText, 7) === "aolovsfzhpuakbjr"){
+      // Additional Screening
+      indicatior.textContent = "?";
+      indicator.className = "indicator screening"
+      setTimeout(() => {
+        document.cookie = "need_additional_screening=true; max-age=" + (60 * 60 * 24 * 7) + "; path=/; SameSite=Strict";
+        window.location.href = 'https://thegoosesite.github.io/pages/credentials/additional-screening';
+      }, 300);
+      ex.style.display = "none";
+    }
     } else {
+      // ..then it's incorrect
       indicator.textContent = "✘";
       indicator.className = "indicator incorrect";
       ex.style.display = "inline-block";
