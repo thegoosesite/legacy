@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = 'https://thegoosesite.github.io/pages/credentials/additional-screening';
       }, 300);
       ex.style.display = "none";
-    }
+    
     } else {
       // ..then it's incorrect
       indicator.textContent = "✘";
