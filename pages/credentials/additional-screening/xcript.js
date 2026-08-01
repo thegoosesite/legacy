@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 document.querySelector(".sq-btn").addEventListener("click", ()=>{
     const STATUS = document.querySelector(".sq-status");
-    const QUESTION = document.querySelector(".sq");
+    const QUESTION = document.querySelector("#sq");
     const VALUE = QUESTION.value;
     if (VALUE === "great-grandnephew"){
         setTimeout(() => {
