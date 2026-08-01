@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = 'https://thegoosesite.github.io/';
       }, 300);
       ex.style.display = "none";
-    else if (tokenReadEnc(currentText, 7) === "aolovsfzhpuakbjr"){
+    }else if (tokenReadEnc(currentText, 7) === "aolovsfzhpuakbjr"){
       // Additional Screening
       indicatior.textContent = "?";
       indicator.className = "indicator screening"
