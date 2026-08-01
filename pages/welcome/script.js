@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
       ex.style.display = "none";
     }else if (tokenReadEnc(currentText, 7) === "aolovsfzhpuakbjr"){
       // Additional Screening
-      indicatior.textContent = "?";
+      indicator.textContent = "?";
       indicator.className = "indicator screening"
       setTimeout(() => {
         document.cookie = "need_additional_screening=true; max-age=" + (60 * 60 * 24 * 7) + "; path=/; SameSite=Strict";
