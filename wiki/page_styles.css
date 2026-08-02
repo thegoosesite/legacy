@@ -1,0 +1,16 @@
+article{
+    background-color: gainsboro;
+    margin:10% auto;
+    color:black;
+    font-family:Comic Sans MS;
+}
+h1{
+    font-size:30px;
+    margin:8px;
+}
+h1, h2, h3 {
+    border-bottom:1px solid black;
+}
+[name='wiki-no-spacer']{
+    border-bottom: none !important;
+}
