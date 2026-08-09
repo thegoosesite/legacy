@@ -1,17 +1,16 @@
-<<<<<<< HEAD
+
 article{
     background-color: gainsboro;
     margin:10% auto;
     color:black;
     font-family:Comic Sans MS;
     text-align: left !important;
-=======
+}
 body{font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;}
 h1, h2, h3 {
     border-bottom:3px solid black;
     margin:0px;
     margin-bottom: 5px;;
->>>>>>> 3fde8fab9bd99ceb7dd9698c6b9856a258c371ef
 }
 .wiki-ref {
   text-decoration: none; /* Removes the underline */
@@ -31,7 +30,6 @@ h1, h2, h3 {
     text-decoration: none;
     
 }
-<<<<<<< HEAD
 wikilink {
   color: blue;
   text-decoration: underline;
@@ -59,7 +57,6 @@ citation{
     text-decoration: none;
     
 }
-=======
 [name='wiki-no-bottom']{
     border-bottom:none !important;
 }
@@ -68,5 +65,3 @@ article{
     color:black;
     border-radius:3px;
 }
-
->>>>>>> 3fde8fab9bd99ceb7dd9698c6b9856a258c371ef
