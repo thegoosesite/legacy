@@ -4,6 +4,6 @@ document.addEventListener("DOMContentLoaded", function(){
   if (siteRunning === true){
     console.log(""); // DONT add anything here
   }else{
-    window.location.replace("https://worshipthegoose.github.io/cdn4/server_troubles.html"); // Server troubles
+    window.location.replace("https://worshipthegoose.github.io/cdn4/deactivation.html"); // Server troubles
   }
 });
