@@ -34,10 +34,14 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       // No valid cookie and no access token -> send to welcome/login page
       setTimeout(function(){
-        if (pirate === false){ // Not being pirateed
+        if (pirate === true){ // Not being pirateed
+          console.log("");
+          /* You're the boss, you run the circus baby! */
+          /* C. T. baggy jeans waistline */
+        }else{
           window.location.replace(loginPage);
         }
-      }, 500);
+      }, 1000);
       return;
     }
   }
