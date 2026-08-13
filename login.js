@@ -1,4 +1,5 @@
 // Global scope popup toggle
+import { pirate } from 'https://thegoosesite.github.io/services.js';
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
   const popup = document.getElementById('bottomPopup');
@@ -32,7 +33,11 @@ document.addEventListener("DOMContentLoaded", function() {
       verifyToken(token);
     } else {
       // No valid cookie and no access token -> send to welcome/login page
-      setTimeout(function(){window.location.replace(loginPage);}, 500);
+      setTimeout(function(){
+        if (pirate === false){ // Not being pirateed
+          window.location.replace(loginPage);
+        }
+      }, 500);
       return;
     }
   }
