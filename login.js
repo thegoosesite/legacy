@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
       verifyToken(token);
     } else {
       // No valid cookie and no access token -> send to welcome/login page
-      window.location.replace(loginPage);
+      setTimeout(function(){window.location.replace(loginPage);}, 500);
       return;
     }
   }
