@@ -1,0 +1,9 @@
+p, a{
+  font-family:sans-serif;
+}
+a{
+  color:blue;
+}
+a:active, a:hover{
+  color:slateblue;
+}
