@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
   // For gosedevs: Set this manually
-  siteRunning = true;
+  siteRunning = false;
   if (siteRunning === true){
     /*
     if (window.location.origin == "https://worshipthegoose.github.io" || window.location.origin == "https://thegoosesite.github.io"){
