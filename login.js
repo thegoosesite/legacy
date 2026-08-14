@@ -1,5 +1,5 @@
 // Global scope popup toggle
-import { pirate } from 'https://thegoosesite.github.io/services.js';
+//// import { pirate } from 'https://thegoosesite.github.io/services.js';
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
   const popup = document.getElementById('bottomPopup');
@@ -33,15 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
       verifyToken(token);
     } else {
       // No valid cookie and no access token -> send to welcome/login page
-      setTimeout(function(){
-        if (pirate === true){ // Not being pirateed
-          console.log("");
-          /* You're the boss, you run the circus baby! */
-          /* C. T. baggy jeans waistline */
-        }else{
-          window.location.replace(loginPage);
-        }
-      }, 1000);
+      window.location.replace(loginPage);
       return;
     }
   }
