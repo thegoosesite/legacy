@@ -1,19 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(){
   // For gosedevs: Set this manually
-  siteRunning = false;
+  const manitarget = "https://worshipthegoose.github.io/cdn4/deactivation.html";
+  const siteRunning = false;
   if (siteRunning === true){
-    /*
-    if (window.location.origin == "https://worshipthegoose.github.io" || window.location.origin == "https://thegoosesite.github.io"){
-      console.log("You are viewing an official The Goose Site page. gOoSe.");
-    }else{
-      export const pirate = false;
-      document.querySelector("head").innerHTML = "<meta charset='UTF-8'><link rel='stylesheet' href='https://thegoosesite.github.io/lockdown.css' /><title>You're safe now!</title> ";
-      document.body.innerHTML = "<p>This site is trying to pirate The Goose Site. <a href='about:blank'>Return to safety</a></p>";
-      
-    }
-    */
-    
+     if (window.location.href === manitarget){
+       window.location.replace("https://thegoosesite.github.io")
+     }
   }else{
-    window.location.replace("https://worshipthegoose.github.io/cdn4/deactivation.html"); // Server troubles
+    window.location.replace(manitarget); // Server troubles
   }
 });
