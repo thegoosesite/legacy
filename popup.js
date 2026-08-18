@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   opener.addEventListener('click', () => {
     // Standardized width/height params without arbitrary 'popup=true' string
-    const popup = window.open('https://thegoosesite.github.io?appopen', 'popup', 'width=600,height=400');
+    const popup = window.open('https://thegoosesite.github.io/legacy/?appopen', 'popup', 'width=600,height=400');
     
     // Hide the body visually
     document.body.style.opacity = "0"; 

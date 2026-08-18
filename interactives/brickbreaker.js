@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', function(){
     canvas.height = 320;
 
     // images
-    const imageLink = `https://thegoosesite.github.io/assets/images/BBbackground.png`;
+    const imageLink = `https://thegoosesite.github.io/legacy/assets/images/BBbackground.png`;
     const background = new Image();
     background.src = imageLink;
 
     // Ball image setup
     const ballImage = new Image();
-    ballImage.src = 'https://thegoosesite.github.io/assets/images/BBball.png';
+    ballImage.src = 'https://thegoosesite.github.io/legacy/assets/images/BBball.png';
 
     // Getting elements
     const scoreText = document.querySelector(".BBgooscore");

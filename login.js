@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="bottom-popup" id="bottomPopup">
         <div class="popup-content">
           <button class="close-btn" onclick="togglePopup(false)">&times;</button>
-          <h2>🪿 Important GOOSE reminder 🪿</h2>
-          <h4>We have recently moved our website domain name.</h4>
-          <p>Our developers moved The Goose Site from "worshipthegoose.github.io" to "thegoosesite.github.io".</p>
+          <h2>🪿 Important GOOSE Notice 🪿</h2>
+          <h4>We have recently moved our <em>legacy</em> website domain name.</h4>
+          <p>Our developers moved The Goose Site from "worshipthegoose.github.io" to "thegoosesite.github.io/legacy" for the original site. The new site is permanently at "thegoosesite.github.io".</p>
           <p>We believe this will help gooselings find our site easier.</p>
-          <center><button class='ok-btn-popup' onclick='togglePopup(false)'>Goose.</button></center>
+          <center><button class='ok-btn-popup' onclick='togglePopup(false)'>Goose (Dismiss)</button></center>
         </div>
       </div>
     `);
