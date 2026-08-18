@@ -2,43 +2,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const PAGES = [
         {
             title: "Home Page",
-            url: "https://thegoosesite.github.io",
+            url: "https://thegoosesite.github.io/legacy",
             content: "Welcome to everyone except Saam! Repent your goosins at St. Duck's Church, view our great bulletin board, and gooseling.",
             keywords: "home, welcome, main, index, goose, goosism, repent, worship"
         },
         {
             title: "The Unity Videos",
-            url: "https://thegoosesite.github.io/videos",
+            url: "https://thegoosesite.github.io/legacy/videos",
             content: "Worship, pray, and repent with the unity videos.",
             keywords: "goosevideos, quiteholy, channel, videos, unity"
         },
         {
             title: "The Trinity Slideshows",
-            url: "https://thegoosesite.github.io/powerpoint",
+            url: "https://thegoosesite.github.io/legacy/powerpoint",
             content: "Pray with the trinity slideshows...",
             keywords: "slides, powerpoint, microsoft, trinity, slideshow, slideshows"
         },
         {
             title: "The Holy Goose Bible",
-            url: "https://thegoosesite.github.io/bible",
+            url: "https://thegoosesite.github.io/legacy/bible",
             content: "Read the holy goose bible and cherish it for dear life.",
             keywords: "quran, bible, book, gooseling, holy"
         },
         {
             title: "Dancing Monster",
-            url: "https://thegoosesite.github.io/saint-rainbowhairs",
+            url: "https://thegoosesite.github.io/legacy/saint-rainbowhairs",
             content: "A goose page dedicated to Saint Duck's nephew *twice removed*.",
             keywords: "canon, dancingmonster, monster, rainbowhairs"
         },
         {
             title: "Interactives",
-            url: "https://thegoosesite.github.io/interactives",
+            url: "https://thegoosesite.github.io/legacy/interactives",
             content: "Goose games coded in HTML5!",
             keywords: "interactives, games, goosegames, breakout, brickbreaker, pong"
         },
         {
             title: "Youtube Channel",
-            url: "https://thegoosesite.github.io/youtube",
+            url: "https://thegoosesite.github.io/legacy/youtube",
             content: "The great Youtube channel.... subscribe or die.",
             keywords: "unity, youtube, channel, videos"
         }
