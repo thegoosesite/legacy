@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   if (footer) {
-    footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none' class='eyecare'><u>Eye Care Mode</u></a></center>");
+    footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none' title='A GOOSE alternative to Dark Mode. Click to turn on.' class='eyecare'><u>Duck Mode</u></a></center>");
   }
 
   // FIX 1: Corrected string comparison and CSS syntax
