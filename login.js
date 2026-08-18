@@ -101,8 +101,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.insertAdjacentHTML('beforeend', htmlContent);
     togglePopup(true);
   }
-
   // Secret Easter Egg Detection
+  let cycle = true;
   const targetPhrase = "indi";
   let inputBuffer = "";
 
@@ -128,7 +128,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function sayChez() {
     const html = document.documentElement;
+    let sums;
+    if (cycle){
+      sums = 180;
+    }else{
+      sums =  0;
+    }
     html.style.setProperty("transition", "transform 0.5s ease");
-    html.style.setProperty("transform", "rotate(180deg)", "important");
+    html.style.setProperty("transform", "rotate("+sums+"deg)", "important");
   }
 });
