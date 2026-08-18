@@ -1,11 +1,11 @@
 body{
-  cursor: url("https://thegoosesite.github.io/assets/cursors/cursor.png"), default !important
+  cursor: url("https://thegoosesite.github.io/legacy/assets/cursors/cursor.png"), default !important
 }
 button, a, #goose, .goose, #image{
-  cursor: url("https://thegoosesite.github.io/assets/cursors/pointer.png"), pointer !important
+  cursor: url("https://thegoosesite.github.io/legacy/assets/cursors/pointer.png"), pointer !important
 }
 body {
-  background-image: url('https://thegoosesite.github.io/assets/images/background.png') !important;
+  background-image: url('https://thegoosesite.github.io/legacy/assets/images/background.png') !important;
 }
 main{
     margin-top:120px;
