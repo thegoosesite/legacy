@@ -131,8 +131,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let sums;
     if (cycle){
       sums = 180;
+      cycle = false;
     }else{
       sums =  0;
+      cycle = true;
     }
     html.style.setProperty("transition", "transform 0.5s ease");
     html.style.setProperty("transform", "rotate("+sums+"deg)", "important");
