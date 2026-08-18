@@ -22,18 +22,21 @@ document.addEventListener("DOMContentLoaded", function() {
   if (footer) {
     footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none' class='eyecare'><u>Eye Care Mode</u></a></center>");
   }
-
+  if (getCookie("duck_mode") === true){
+    html.style.filter = "grayscale(67%);"
+  }
   const icare = document.querySelector(".eyecare");
   let icareOn = false;
 
   if (icare) {
     icare.addEventListener("click", function() {
-      if (icareOn) {
-        html.style.filter = "none";
-      } else {
-        html.style.filter = "grayscale(67%)";
+      if (!getCookie("duck_mode") === "true"){
+        document.cookie = "duck_mode=true";
+        
+      }else{
+        document.cookie = "duck_mode=true; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
       }
-      icareOn = !icareOn;
+      window.location.reload()
     });
   }
 
