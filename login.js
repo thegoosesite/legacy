@@ -1,10 +1,11 @@
 // Global scope popup toggle
 
-//// import { pirate } from 'https://thegoosesite.github.io/services.js';
+//// import { pirate } from 'https://thegoosesite.github.io/legacy/services.js';
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
   const popup = document.getElementById('bottomPopup');
   
+
   if (!overlay || !popup) return;
   
   if (show) {
@@ -17,7 +18,7 @@ function togglePopup(show) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  const loginPage = 'https://thegoosesite.github.io/pages/welcome/';
+  const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
 
   function getCookie(name) {
     let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));

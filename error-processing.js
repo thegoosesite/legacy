@@ -3,23 +3,23 @@ document.addEventListener("DOMContentLoaded", function(){
   const codeNormal = `    <nav>
     <ul class='grandpa'>
         <li class='dad'>
-            <a class='logo son' href='http://thegoosesite.github.io' title='Back to the homepage.'>The Goose Site</a>
+            <a class='logo son' href='http://thegoosesite.github.io/legacy' title='Back to the homepage.'>The Goose Site</a>
         </li>
         <li class="dad">
-            <a class="son" title="Play Goose Games..." href="https://thegoosesite.github.io/interactives">Interactives</a>
+            <a class="son" title="Play Goose Games..." href="https://thegoosesite.github.io/legacy/interactives">Interactives</a>
         </li>
         <li class='dad'>
-            <a class='son' title='The trinity slideshows...' href='https://thegoosesite.github.io/powerpoint'>Slideshows</a>
+            <a class='son' title='The trinity slideshows...' href='https://thegoosesite.github.io/legacy/powerpoint'>Slideshows</a>
         </li>
         <li style="cursor:pointer;" class="dad dropdown">
             <a class="son" title="The unity videos...">Videos</a>
             <ul class="dropdown-content">
-                <li class="space"><a title="Subscribe or die..." href="https://thegoosesite.github.io/youtube">Youtube Channel</a></li>
-                <li><a title="Worship, pray, and repent..." href="https://thegoosesite.github.io/videos">Unity Video Collection</a></li>
+                <li class="space"><a title="Subscribe or die..." href="https://thegoosesite.github.io/legacy/youtube">Youtube Channel</a></li>
+                <li><a title="Worship, pray, and repent..." href="https://thegoosesite.github.io/legacy/videos">Unity Video Collection</a></li>
             </ul>
         </li>
         <li class='dad'>
-            <a class='son' title='Read the Goose Bible...' href='https://thegoosesite.github.io/bible'>Bible</a>
+            <a class='son' title='Read the Goose Bible...' href='https://thegoosesite.github.io/legacy/bible'>Bible</a>
         </li>
     </ul>
     </nav>
@@ -41,13 +41,13 @@ const codeNSI = `
       <div class="login-div">
       <ul class="login-ul">
         <li class="login-li">
-          <a class="login-a" href="https://thegoosesite.github.io/pages/welcome">Home</a>
+          <a class="login-a" href="https://thegoosesite.github.io/legacy/pages/welcome">Home</a>
         </li>
         <li class="login-li">
-          <a class="login-a" href="https://thegoosesite.github.io/pages/questions">FAQ</a>
+          <a class="login-a" href="https://thegoosesite.github.io/legacy/pages/questions">FAQ</a>
         </li>
         <li class="login-li">
-          <a class="login-a" href="https://thegoosesite.github.io/pages/repository">Repository</a>
+          <a class="login-a" href="https://thegoosesite.github.io/legacy/pages/repository">Repository</a>
         </li>
         <li class="login-li">
           <a class="login-a" href="mailto:worshiptheholygoose@gmail.com">Contact Us</a>
@@ -80,12 +80,12 @@ const codeNSI = `
 
   if (getCookie('site_access') === 'granted') {
     document.body.innerHTML = codeNormal;
-    head.insertAdjacentHTML('beforeend', `<link rel="stylesheet" href="https://thegoosesite.github.io/cursor.css" />`);
+    head.insertAdjacentHTML('beforeend', `<link rel="stylesheet" href="https://thegoosesite.github.io/legacy/cursor.css" />`);
     redirectUrl = "http://thegoosesite.github.io"; // Gooseling Website
   } else {
     document.body.innerHTML = codeNSI;
-    head.insertAdjacentHTML('beforeend', `<link rel="icon" type="image/x-icon" href="https://thegoosesite.github.io/favicon.ico">`);
-    redirectUrl = "https://thegoosesite.github.io/pages/welcome"; // Guest Website
+    head.insertAdjacentHTML('beforeend', `<link rel="icon" type="image/x-icon" href="https://thegoosesite.github.io/legacy/favicon.ico">`);
+    redirectUrl = "https://thegoosesite.github.io/legacy/pages/welcome"; // Guest Website
   }
 
   // Actual logic to perform the redirect after 3 seconds

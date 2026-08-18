@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   if ((getCookie('site_access') === 'granted' && window.location.pathname !== '/') || getCookie('need_additional_screening') !== 'true') {
-    window.location.href = 'https://thegoosesite.github.io/pages/welcome'; 
+    window.location.href = 'https://thegoosesite.github.io/legacy/pages/welcome'; 
   }
   const BUTTON = document.querySelector(".sq-btn");
   if (BUTTON) {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 setTimeout(() => {
                     STATUS.textContent = "Status: Passed. Redirecting...";
                     document.cookie = "site_access=granted; max-age=" + (60 * 60 * 24 * 7) + "; path=/; SameSite=Strict";
-                    window.location.replace('https://thegoosesite.github.io')
+                    window.location.replace('https://thegoosesite.github.io/legacy')
                 },300)
             } else {
                 STATUS.textContent = "Status: Failed. Please try again."
