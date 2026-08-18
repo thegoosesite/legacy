@@ -4,10 +4,9 @@
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
   const popup = document.getElementById('bottomPopup');
-  
 
   if (!overlay || !popup) return;
-  
+
   if (show) {
     overlay.classList.add('active');
     popup.classList.add('active');
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Verification Function
   function verifyToken(tokenVal) {
     const rawData = localStorage.getItem(`token_${tokenVal}`);
-    
+
     if (!rawData) {
       console.warn(`Token "token_${tokenVal}" not found in localStorage.`);
       window.location.replace(loginPage);
@@ -84,31 +83,35 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Grant Access & Clean Up
-    document.cookie = "site_access=granted; Max-Age=600; SameSite=Strict; path=/;";
+    // Calculate remaining seconds based on token expiry instead of hardcoded 600s
+    const maxAgeSeconds = Math.max(0, Math.floor((tokenData.expiry - Date.now()) / 1000));
+    document.cookie = `site_access=granted; Max-Age=${maxAgeSeconds}; SameSite=Strict; path=/;`;
     localStorage.removeItem(`token_${tokenVal}`);
 
-    // Remove ?access_token from URL without refreshing/redirecting away
-    const cleanUrl = window.location.pathname + window.location.search.replace(/[\?&]access_token=[^&]+/, '').replace(/^&/, '?');
-    window.history.replaceState({}, document.title, cleanUrl || '/');
+    // Cleanly remove ?access_token from URL without malformed query string residue
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete('access_token');
+    window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
   }
 
   // Helper to inject HTML and display popup safely
   function injectAndShowBanner(htmlContent) {
-    if (document.getElementById('popupOverlay')) return; 
-    
+    if (document.getElementById('popupOverlay')) return;
+
     document.body.insertAdjacentHTML('beforeend', htmlContent);
     togglePopup(true);
   }
-  // ...
-  const targetPhrase = "indi"; 
+
+  // Secret Easter Egg Detection
+  const targetPhrase = "indi";
   let inputBuffer = "";
 
   window.addEventListener("keydown", (event) => {
     // Ignore modifier keys like Shift, Control, or Alt
-    if (event.key.length > 1) return; 
+    if (event.key.length > 1) return;
 
     // Add the new character to your buffer
-    inputBuffer += event.key.toLowerCase(); 
+    inputBuffer += event.key.toLowerCase();
 
     // Keep the buffer short (only as long as the target phrase)
     if (inputBuffer.length > targetPhrase.length) {
@@ -124,7 +127,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   function sayChez() {
-    document.querySelector("html").style.setProperty("transform", "rotate(180deg)", "important");
+    const html = document.documentElement;
+    html.style.setProperty("transition", "transform 0.5s ease");
+    html.style.setProperty("transform", "rotate(180deg)", "important");
   }
-
 });
