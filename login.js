@@ -1,6 +1,4 @@
 // Global scope popup toggle
-
-//// import { pirate } from 'https://thegoosesite.github.io/legacy/services.js';
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
   const popup = document.getElementById('bottomPopup');
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (token) {
       verifyToken(token);
     } else {
-      // No valid cookie and no access token -> send to welcome/login page
       window.location.replace(loginPage);
       return;
     }
@@ -82,61 +79,50 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
 
-    // Grant Access & Clean Up
-    // Calculate remaining seconds based on token expiry instead of hardcoded 600s
     const maxAgeSeconds = Math.max(0, Math.floor((tokenData.expiry - Date.now()) / 1000));
     document.cookie = `site_access=granted; Max-Age=${maxAgeSeconds}; SameSite=Strict; path=/;`;
     localStorage.removeItem(`token_${tokenVal}`);
 
-    // Cleanly remove ?access_token from URL without malformed query string residue
     const cleanUrl = new URL(window.location.href);
     cleanUrl.searchParams.delete('access_token');
     window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
   }
 
-  // Helper to inject HTML and display popup safely
   function injectAndShowBanner(htmlContent) {
     if (document.getElementById('popupOverlay')) return;
 
     document.body.insertAdjacentHTML('beforeend', htmlContent);
     togglePopup(true);
   }
+
   // Secret Easter Egg Detection
   let cycle = true;
-  const targetPhrase = "indi";
+  const targetPhrases = ["indi", "gose"];
+  const maxLength = Math.max(...targetPhrases.map(p => p.length));
   let inputBuffer = "";
 
   window.addEventListener("keydown", (event) => {
-    // Ignore modifier keys like Shift, Control, or Alt
     if (event.key.length > 1) return;
 
-    // Add the new character to your buffer
     inputBuffer += event.key.toLowerCase();
 
-    // Keep the buffer short (only as long as the target phrase)
-    if (inputBuffer.length > targetPhrase.length) {
-      inputBuffer = inputBuffer.slice(-targetPhrase.length);
+    if (inputBuffer.length > maxLength) {
+      inputBuffer = inputBuffer.slice(-maxLength);
     }
 
-    // Check for a match
-    if ((inputBuffer === targetPhrase) or (inputBuffer === "gose")) {
+    if (targetPhrases.some(phrase => inputBuffer.endsWith(phrase))) {
       console.log("Phrase detected!");
       sayChez();
-      inputBuffer = ""; // Clear buffer after match
+      inputBuffer = "";
     }
   });
 
   function sayChez() {
     const html = document.documentElement;
-    let sums;
-    if (cycle){
-      sums = 180;
-      cycle = false;
-    }else{
-      sums =  360;
-      cycle = true;
-    }
-    html.style.setProperty("transition", "transform 0.5s ease");
-    html.style.setProperty("transform", "rotate("+sums+"deg)", "important");
+    const degree = cycle ? 180 : 0;
+    cycle = !cycle;
+
+    html.style.transition = "transform 0.5s ease";
+    html.style.transform = `rotate(${degree}deg)`;
   }
 });
