@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
       sums = 180;
       cycle = false;
     }else{
-      sums =  0;
+      sums =  360;
       cycle = true;
     }
     html.style.setProperty("transition", "transform 0.5s ease");
