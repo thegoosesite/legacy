@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const footer = document.querySelector("footer");
   
   if (footer) {
-    footer.insertAdjacentHTML("beforeend", "<center><a class='eyecare'>Eye Care Mode</a></center>");
+    footer.insertAdjacentHTML("beforeend", "<center><a class='eyecare'><u>Eye Care Mode</u></a></center>");
   }
 
   const icare = document.querySelector(".eyecare");
