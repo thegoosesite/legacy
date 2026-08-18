@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Constants and Nonstants
   const manitarget = "https://worshipthegoose.github.io/cdn4/deactivation.html";
-  let siteRunning = false; // For gosedevs: Set this manually
+  let siteRunning = true; // For gosedevs: Set this manually
 
   if (siteRunning) {
     if (window.location.href === manitarget) {
