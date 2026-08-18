@@ -2,7 +2,7 @@
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
   const popup = document.getElementById('bottomPopup');
-
+  
   if (!overlay || !popup) return;
 
   if (show) {
@@ -17,6 +17,25 @@ function togglePopup(show) {
 document.addEventListener("DOMContentLoaded", function() {
   const html = document.documentElement;
   const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
+  const footer = document.querySelector("footer");
+  
+  if (footer) {
+    footer.insertAdjacentHTML("beforeend", "<a class='eyecare'>Eye Care Mode</a>");
+  }
+
+  const icare = document.querySelector(".eyecare");
+  let icareOn = false;
+
+  if (icare) {
+    icare.addEventListener("click", function() {
+      if (icareOn) {
+        html.style.filter = "none";
+      } else {
+        html.style.filter = "grayscale(80%)";
+      }
+      icareOn = !icareOn;
+    });
+  }
 
   function getCookie(name) {
     let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -119,15 +138,10 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   function sayChez() {
-    
     const degree = cycle ? 180 : 0;
     cycle = !cycle;
 
     html.style.transition = "transform 0.5s ease";
     html.style.transform = `rotate(${degree}deg)`;
-  }
-  const isDarkMode = getCookie("dark-mode") === "on";
-  if (isDarkMode){
-    html.style.filter = "invert()";
   }
 });
