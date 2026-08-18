@@ -99,4 +99,32 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.insertAdjacentHTML('beforeend', htmlContent);
     togglePopup(true);
   }
+  // ...
+  const targetPhrase = "indi"; 
+  let inputBuffer = "";
+
+  window.addEventListener("keydown", (event) => {
+    // Ignore modifier keys like Shift, Control, or Alt
+    if (event.key.length > 1) return; 
+
+    // Add the new character to your buffer
+    inputBuffer += event.key.toLowerCase(); 
+
+    // Keep the buffer short (only as long as the target phrase)
+    if (inputBuffer.length > targetPhrase.length) {
+      inputBuffer = inputBuffer.slice(-targetPhrase.length);
+    }
+
+    // Check for a match
+    if (inputBuffer === targetPhrase) {
+      console.log("Phrase detected!");
+      sayChez();
+      inputBuffer = ""; // Clear buffer after match
+    }
+  });
+
+  function sayChez() {
+    document.querySelector("html").style.setProperty("transform", "rotate(180deg)", "important");
+  }
+
 });

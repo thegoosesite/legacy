@@ -206,3 +206,7 @@ smalltext{
     color:white;
     -webkit-text-stroke:0 !important;
 }
+
+.theflip{
+    transform: rotate(180deg) !important
+}
