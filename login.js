@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Check for a match
-    if (inputBuffer === targetPhrase) {
+    if (inputBuffer === targetPhrase or inputBuffer === "gose") {
       console.log("Phrase detected!");
       sayChez();
       inputBuffer = ""; // Clear buffer after match
