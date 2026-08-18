@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const footer = document.querySelector("footer");
   
   if (footer) {
-    footer.insertAdjacentHTML("beforeend", "<a class='eyecare'>Eye Care Mode</a>");
+    footer.insertAdjacentHTML("beforeend", "<center><a class='eyecare'>Eye Care Mode</a></center>");
   }
 
   const icare = document.querySelector(".eyecare");
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (icareOn) {
         html.style.filter = "none";
       } else {
-        html.style.filter = "grayscale(80%)";
+        html.style.filter = "grayscale(67%)";
       }
       icareOn = !icareOn;
     });
