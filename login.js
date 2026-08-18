@@ -19,30 +19,32 @@ document.addEventListener("DOMContentLoaded", function() {
   const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
   const footer = document.querySelector("footer");
   
-  if (footer) {
-    footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none' class='eyecare'><u>Eye Care Mode</u></a></center>");
-  }
-  if (getCookie("duck_mode") === true){
-    html.style.filter = "grayscale(67%);"
-  }
-  const icare = document.querySelector(".eyecare");
-  let icareOn = false;
-
-  if (icare) {
-    icare.addEventListener("click", function() {
-      if (!getCookie("duck_mode") === "true"){
-        document.cookie = "duck_mode=true";
-        
-      }else{
-        document.cookie = "duck_mode=true; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
-      }
-      window.location.reload()
-    });
-  }
-
   function getCookie(name) {
     let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
+  }
+
+  if (footer) {
+    footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none' class='eyecare'><u>Eye Care Mode</u></a></center>");
+  }
+
+  // FIX 1: Corrected string comparison and CSS syntax
+  if (getCookie("duck_mode") === "true") {
+    html.style.filter = "grayscale(67%)";
+  }
+
+  const icare = document.querySelector(".eyecare");
+
+  if (icare) {
+    icare.addEventListener("click", function() {
+      // FIX 2: Fixed boolean logic and added path=/
+      if (getCookie("duck_mode") !== "true") {
+        document.cookie = "duck_mode=true; path=/;";
+      } else {
+        document.cookie = "duck_mode=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
+      }
+      window.location.reload();
+    });
   }
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -144,6 +146,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const degree = cycle ? 180 : 0;
     cycle = !cycle;
 
+    // FIX 3: Added transform-origin to prevent off-screen shifting
+    html.style.transformOrigin = "center center";
     html.style.transition = "transform 0.5s ease";
     html.style.transform = `rotate(${degree}deg)`;
   }
