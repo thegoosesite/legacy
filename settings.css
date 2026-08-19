@@ -76,9 +76,11 @@ input {
     color:white !important;
     font-family: 'Comic Sans MS', sans-serif;
 
+
 }
+
 .gooset h4 .textex:hover{
-    text-decoration: underline;
+    text-decoration: underline 1px whit !important;
 }
 .settings {
     display: flex;
