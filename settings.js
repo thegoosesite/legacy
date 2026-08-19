@@ -1,5 +1,17 @@
-// Tossed DOMContentLoaded inside Circus Baby so it fires immediately upon dynamic injection
-(function initSettings() {
+document.addEventListener("DOMContentLoaded", function() {
+    runSettingsScript();
+});
+
+// Safety check: executes immediately if DOMContentLoaded already passed
+if (document.readyState === "interactive" || document.readyState === "complete") {
+    runSettingsScript();
+}
+
+function runSettingsScript() {
+    // Avoid double-execution
+    if (window.settingsInitialized) return;
+    window.settingsInitialized = true;
+
     document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://thegoosesite.github.io/legacy/settings.css'>");
     
     const gooset = document.querySelector(".gooset");
@@ -11,7 +23,7 @@
         if (style) style.disabled = true;
     }
 
-    // Initialize overlay state because I'M CHICA!
+    // Initialize overlay state
     closeOrInit();
 
     if (footer) {
@@ -28,7 +40,7 @@
     // Toggle button handler with open/close state check
     if (toggle) {
         toggle.addEventListener("click", function() {
-            // FIXED: Optional chaining on gooset prevent TypeError
+            // FIXED: Optional chaining prevents null error if .gooset isn't in DOM
             if (gooset?.style.display === "block") {
                 closeOrInit();
                 toggle.textContent = "Open Goosettings";
@@ -115,7 +127,6 @@
             if (state.duckMode) {
                 document.cookie = "duck_mode=on; path=/";
             } else {
-                // Clear duck mode if unchecked
                 document.cookie = "duck_mode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
 
@@ -131,4 +142,4 @@
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
-})();
+}

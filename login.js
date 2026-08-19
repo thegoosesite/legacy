@@ -1,3 +1,6 @@
+// Inject external script immediately so its DOMContentLoaded listener triggers properly
+document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>");
+
 // Global scope popup toggle
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
@@ -15,7 +18,6 @@ function togglePopup(show) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>");
   const html = document.documentElement;
   const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
   const footer = document.querySelector("footer");
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return match ? match[2] : null;
   }
 
-  // FIXED: Changed "true" to "on" to match Script 2's set value
+  // FIXED: Value changed to "on" to match Script 2
   if (getCookie("duck_mode") === "on") {
     html.style.filter = "grayscale(67%)";
   }
