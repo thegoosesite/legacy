@@ -15,7 +15,7 @@ function togglePopup(show) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>";)
+  document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>")
   const html = document.documentElement;
   const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
   const footer = document.querySelector("footer");
