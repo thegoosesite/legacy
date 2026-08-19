@@ -1,4 +1,9 @@
 (function initSettings() {
+    // Pre: cookie
+    function getCookie(name) {
+        let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : null;
+    }
     // 1. Inject Stylesheet
     if (!document.querySelector(".settings-css")) {
         document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://thegoosesite.github.io/legacy/settings.css'>");
@@ -43,6 +48,13 @@
         footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none;text-decoration:underline;cursor:pointer;' title='Toggle goosettings' class='eyecare'>Open Goosettings</a></center>");
     }
 
+    const state = {
+        duckMode: false,
+        homepage: "standard",
+        trackers: true,
+        secureconn: true
+    };
+
     const settings = document.querySelector('.settings');
     const general = document.querySelector(".gooset-general-li");
     const accessibility = document.querySelector(".gooset-accessibility-li");
@@ -59,18 +71,15 @@
             } else {
                 if (style) style.disabled = false;
                 gooset.style.display = "flex";
-                toggle.textContent = "Close Goosettings";
+                toggle.style.display = "none";
+                if (getCookie("duck_mode") === "on"){
+                    state.duck_mode = true;
+                }
             }
         });
     }
 
     // State object to remember settings values across tab switches
-    const state = {
-        duckMode: false,
-        homepage: "standard",
-        trackers: true,
-        secureconn: true
-    };
 
     const generalScript = `<h2>General</h2>
             <strong>Default Start Page</strong>
