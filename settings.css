@@ -90,7 +90,7 @@ input {
 }
 
 .gooset h4 .textex:hover{
-    text-decoration: underline 1px whit !important;
+    text-decoration: underline 1px white !important;
 }
 .settings {
     display: flex;
