@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
+// Tossed DOMContentLoaded inside Circus Baby so it fires immediately upon dynamic injection
+(function initSettings() {
     document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://thegoosesite.github.io/legacy/settings.css'>");
     
     const gooset = document.querySelector(".gooset");
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (style) style.disabled = true;
     }
 
-    // Initialize overlay state
+    // Initialize overlay state because I'M CHICA!
     closeOrInit();
 
     if (footer) {
@@ -27,12 +28,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Toggle button handler with open/close state check
     if (toggle) {
         toggle.addEventListener("click", function() {
-            if (gooset.style.display === "block") {
+            // FIXED: Optional chaining on gooset prevent TypeError
+            if (gooset?.style.display === "block") {
                 closeOrInit();
                 toggle.textContent = "Open Goosettings";
             } else {
-                style.disabled = false;
-                gooset.style.display = "block";
+                if (style) style.disabled = false;
+                if (gooset) gooset.style.display = "block";
                 toggle.textContent = "Close Goosettings";
             }
         });
@@ -112,6 +114,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (state.duckMode) {
                 document.cookie = "duck_mode=on; path=/";
+            } else {
+                // Clear duck mode if unchecked
+                document.cookie = "duck_mode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
 
             if (state.homepage === "wiki") {
@@ -126,4 +131,4 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
-});
+})();

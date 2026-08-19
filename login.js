@@ -15,22 +15,20 @@ function togglePopup(show) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>")
+  document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>");
   const html = document.documentElement;
   const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
   const footer = document.querySelector("footer");
-  
 
   function getCookie(name) {
     let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
   }
 
-  // FIX 1: Corrected string comparison and CSS syntax
-  if (getCookie("duck_mode") === "true") {
+  // FIXED: Changed "true" to "on" to match Script 2's set value
+  if (getCookie("duck_mode") === "on") {
     html.style.filter = "grayscale(67%)";
   }
-
 
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('access_token');
@@ -131,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const degree = cycle ? 180 : 0;
     cycle = !cycle;
 
-    // FIX 3: Added transform-origin to prevent off-screen shifting
     html.style.transformOrigin = "center center";
     html.style.transition = "transform 0.5s ease";
     html.style.transform = `rotate(${degree}deg)`;
