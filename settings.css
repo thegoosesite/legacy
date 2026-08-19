@@ -13,11 +13,10 @@ input {
     padding: 10px 20px;
     border-radius: 5px;
     user-select: none;
-    position: absolute;
+    position: fixed;
     top:50%;
-    bottom:50%;
-    right:50%;
     left:50%;
+    translate: -50% -50%;
     margin:0 auto 0 auto;
     width: 700px;
     height: 500px;

@@ -8,7 +8,7 @@
     let gooset = document.querySelector(".gooset");
     if (!gooset) {
         document.body.insertAdjacentHTML("beforeend", `
-            <div class="gooset" style="display:none;">
+            <div class="gooset" style="display:none;flex-direction:row !important;">
                 <a class="textex" style="position:absolute;top:0;right:0;cursor:pointer !important;margin-right:6px;margin-top:5px;font-weight:bold;font-size:25px;">X</a>
                 <ul>
                     <li class="gooset-general-li">General</li>
@@ -47,12 +47,12 @@
     // 4. Toggle Button Handler
     if (toggle) {
         toggle.addEventListener("click", function() {
-            if (gooset.style.display === "block") {
+            if (gooset.style.display === "flex") {
                 closeOrInit();
                 toggle.textContent = "Open Goosettings";
             } else {
                 if (style) style.disabled = false;
-                gooset.style.display = "block";
+                gooset.style.display = "flex";
                 toggle.textContent = "Close Goosettings";
             }
         });
