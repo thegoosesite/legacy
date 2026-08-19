@@ -73,7 +73,7 @@
                 gooset.style.display = "flex";
                 toggle.style.display = "none";
                 if (getCookie("duck_mode") === "on"){
-                    state.duck_mode = true;
+                    state.duckMode = true;
                 }
             }
         });
