@@ -16,7 +16,7 @@
                     <li class="gooset-themes-li">Themes</li>
                     <li class="gooset-about-li">About</li>
                 </ul>
-                <div class="settings" style="display:flex;flex-direction:column !important;"></div>
+                <div class="settings" style="display:flex;flex-direction:column !important; margin:10px !important"></div>
             </div>
         `);
         gooset = document.querySelector(".gooset");
