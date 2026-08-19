@@ -5,6 +5,9 @@ main > :not(.gooset) {
 input {
     height: auto;
 }
+main{
+    position: relative !important;
+}
 .gooset {
     background-color: darkorange;
     box-shadow: 0 0 20px 5px rgb(173, 126, 32), 0 0 40px 10px rgba(254, 137, 4, 0.5);
@@ -16,8 +19,10 @@ input {
     position: absolute;
     inset:0;
     margin:auto;
-    width: 50%;
-    height: auto;
+    width: 50vh;
+    height: 400px;
+    display: flex !important;
+    flex-direction: column;
 }
 .gooset h4 .textex:hover {
     text-decoration: underline;
