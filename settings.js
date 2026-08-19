@@ -1,20 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
-    runSettingsScript();
-});
+(function initSettings() {
+    // 1. Inject Stylesheet
+    if (!document.querySelector(".settings-css")) {
+        document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://thegoosesite.github.io/legacy/settings.css'>");
+    }
 
-// Safety check: executes immediately if DOMContentLoaded already passed
-if (document.readyState === "interactive" || document.readyState === "complete") {
-    runSettingsScript();
-}
+    // 2. Inject missing HTML container elements if they don't exist
+    let gooset = document.querySelector(".gooset");
+    if (!gooset) {
+        document.body.insertAdjacentHTML("beforeend", `
+            <div class="gooset" style="display:none;">
+                <button class="textex" style="float:right;cursor:pointer;">X</button>
+                <ul>
+                    <li class="gooset-general-li">General</li>
+                    <li class="gooset-accessibility-li">Accessibility</li>
+                    <li class="gooset-themes-li">Themes</li>
+                    <li class="gooset-about-li">About</li>
+                </ul>
+                <div class="settings"></div>
+            </div>
+        `);
+        gooset = document.querySelector(".gooset");
+    }
 
-function runSettingsScript() {
-    // Avoid double-execution
-    if (window.settingsInitialized) return;
-    window.settingsInitialized = true;
-
-    document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://thegoosesite.github.io/legacy/settings.css'>");
-    
-    const gooset = document.querySelector(".gooset");
     const style = document.querySelector(".settings-css");
     const footer = document.querySelector("footer");
 
@@ -23,10 +30,10 @@ function runSettingsScript() {
         if (style) style.disabled = true;
     }
 
-    // Initialize overlay state
     closeOrInit();
 
-    if (footer) {
+    // 3. Inject Link into Footer
+    if (footer && !document.querySelector(".eyecare")) {
         footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none;text-decoration:underline;cursor:pointer;' title='Toggle goosettings' class='eyecare'>Open Goosettings</a></center>");
     }
 
@@ -37,16 +44,15 @@ function runSettingsScript() {
     const themes = document.querySelector(".gooset-themes-li");
     const toggle = document.querySelector(".eyecare");
 
-    // Toggle button handler with open/close state check
+    // 4. Toggle Button Handler
     if (toggle) {
         toggle.addEventListener("click", function() {
-            // FIXED: Optional chaining prevents null error if .gooset isn't in DOM
-            if (gooset?.style.display === "block") {
+            if (gooset.style.display === "block") {
                 closeOrInit();
                 toggle.textContent = "Open Goosettings";
             } else {
                 if (style) style.disabled = false;
-                if (gooset) gooset.style.display = "block";
+                gooset.style.display = "block";
                 toggle.textContent = "Close Goosettings";
             }
         });
@@ -110,10 +116,8 @@ function runSettingsScript() {
         }
     }
 
-    // Default view
     renderGeneral();
 
-    // Event listeners for tabs
     if (general) general.addEventListener("click", renderGeneral);
     if (accessibility) accessibility.addEventListener("click", renderAccessibility);
     if (about && settings) about.addEventListener("click", () => { settings.innerHTML = aboutScript; });
@@ -142,4 +146,4 @@ function runSettingsScript() {
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
-}
+})();

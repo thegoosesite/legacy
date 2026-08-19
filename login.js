@@ -1,6 +1,3 @@
-// Inject external script immediately so its DOMContentLoaded listener triggers properly
-document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>");
-
 // Global scope popup toggle
 function togglePopup(show) {
   const overlay = document.getElementById('popupOverlay');
@@ -18,16 +15,19 @@ function togglePopup(show) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  // Inject settings.js properly via script element
+  const settingsScript = document.createElement("script");
+  settingsScript.src = "https://thegoosesite.github.io/legacy/settings.js";
+  document.head.appendChild(settingsScript);
+
   const html = document.documentElement;
   const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
-  const footer = document.querySelector("footer");
 
   function getCookie(name) {
     let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
   }
 
-  // FIXED: Value changed to "on" to match Script 2
   if (getCookie("duck_mode") === "on") {
     html.style.filter = "grayscale(67%)";
   }
@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
     `);
   }
 
-  // Verification Function
   function verifyToken(tokenVal) {
     const rawData = localStorage.getItem(`token_${tokenVal}`);
 
@@ -100,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function injectAndShowBanner(htmlContent) {
     if (document.getElementById('popupOverlay')) return;
-
     document.body.insertAdjacentHTML('beforeend', htmlContent);
     togglePopup(true);
   }
@@ -113,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.addEventListener("keydown", (event) => {
     if (event.key.length > 1) return;
-
     inputBuffer += event.key.toLowerCase();
 
     if (inputBuffer.length > maxLength) {
@@ -121,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (targetPhrases.some(phrase => inputBuffer.endsWith(phrase))) {
-      console.log("Phrase detected!");
       sayChez();
       inputBuffer = "";
     }
@@ -130,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function() {
   function sayChez() {
     const degree = cycle ? 180 : 0;
     cycle = !cycle;
-
     html.style.transformOrigin = "center center";
     html.style.transition = "transform 0.5s ease";
     html.style.transform = `rotate(${degree}deg)`;
