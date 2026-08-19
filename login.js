@@ -15,17 +15,15 @@ function togglePopup(show) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  document.head.insertAdjacentHTML("beforeend", "<script src='https://thegoosesite.github.io/legacy/settings.js'></script>";)
   const html = document.documentElement;
   const loginPage = 'https://thegoosesite.github.io/legacy/pages/welcome/';
   const footer = document.querySelector("footer");
   
+
   function getCookie(name) {
     let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
-  }
-
-  if (footer) {
-    footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none' title='A GOOSE alternative to Dark Mode. Click to turn on.' class='eyecare'><u>Duck Mode</u></a></center>");
   }
 
   // FIX 1: Corrected string comparison and CSS syntax
@@ -33,19 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
     html.style.filter = "grayscale(67%)";
   }
 
-  const icare = document.querySelector(".eyecare");
-
-  if (icare) {
-    icare.addEventListener("click", function() {
-      // FIX 2: Fixed boolean logic and added path=/
-      if (getCookie("duck_mode") !== "true") {
-        document.cookie = "duck_mode=true; path=/;";
-      } else {
-        document.cookie = "duck_mode=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
-      }
-      window.location.reload();
-    });
-  }
 
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('access_token');

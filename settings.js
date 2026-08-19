@@ -1,19 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
+    document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://thegoosesite.github.io/legacy/settings.css'>");
+    
     const gooset = document.querySelector(".gooset");
     const style = document.querySelector(".settings-css");
+    const footer = document.querySelector("footer");
 
     function closeOrInit() {
-        gooset.style.display = "none";
-        style.disabled = true;
+        if (gooset) gooset.style.display = "none";
+        if (style) style.disabled = true;
     }
 
     // Initialize overlay state
     closeOrInit();
 
-    document.querySelector("button").onclick = function() {
-        style.disabled = false;
-        gooset.style.display = "block";
-    };
+    if (footer) {
+        footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none;text-decoration:underline;cursor:pointer;' title='Toggle goosettings' class='eyecare'>Open Goosettings</a></center>");
+    }
 
     const settings = document.querySelector('.settings');
     const general = document.querySelector(".gooset-general-li");
@@ -21,6 +23,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const about = document.querySelector(".gooset-about-li");
     const themes = document.querySelector(".gooset-themes-li");
     const toggle = document.querySelector(".eyecare");
+
+    // Toggle button handler with open/close state check
+    if (toggle) {
+        toggle.addEventListener("click", function() {
+            if (gooset.style.display === "block") {
+                closeOrInit();
+                toggle.textContent = "Open Goosettings";
+            } else {
+                style.disabled = false;
+                gooset.style.display = "block";
+                toggle.textContent = "Close Goosettings";
+            }
+        });
+    }
 
     // State object to remember settings values across tab switches
     const state = {
@@ -50,59 +66,64 @@ document.addEventListener("DOMContentLoaded", function() {
     const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p>`;
     const accessibilityScript = `<h2>Accessibility</h2><p><label><input id="duck-mode-check" type="checkbox" /> Enable Duck Mode</label></p>`;
 
-    // Functions to render views and bind input listeners
     function renderGeneral() {
+        if (!settings) return;
         settings.innerHTML = generalScript;
         
         const homepageSelect = document.getElementById("gooset-gen-homepage");
         const trackersCheck = document.getElementById("trackers");
         const secureCheck = document.getElementById("secureconn");
 
-        // Restore values from state
-        homepageSelect.value = state.homepage;
-        trackersCheck.checked = state.trackers;
-        secureCheck.checked = state.secureconn;
+        if (homepageSelect) homepageSelect.value = state.homepage;
+        if (trackersCheck) trackersCheck.checked = state.trackers;
+        if (secureCheck) secureCheck.checked = state.secureconn;
 
-        // Save values on change
-        homepageSelect.addEventListener("change", (e) => { state.homepage = e.target.value; });
-        trackersCheck.addEventListener("change", (e) => { state.trackers = e.target.checked; });
-        secureCheck.addEventListener("change", (e) => { state.secureconn = e.target.checked; });
+        if (homepageSelect) homepageSelect.addEventListener("change", (e) => { state.homepage = e.target.value; });
+        if (trackersCheck) trackersCheck.addEventListener("change", (e) => { state.trackers = e.target.checked; });
+        if (secureCheck) secureCheck.addEventListener("change", (e) => { state.secureconn = e.target.checked; });
     }
 
     function renderAccessibility() {
+        if (!settings) return;
         settings.innerHTML = accessibilityScript;
         
         const duckCheck = document.getElementById("duck-mode-check");
-        
-        // Restore saved state
-        duckCheck.checked = state.duckMode;
-
-        // Update state when checkbox is toggled
-        duckCheck.addEventListener("change", (e) => {
-            state.duckMode = e.target.checked;
-        });
+        if (duckCheck) {
+            duckCheck.checked = state.duckMode;
+            duckCheck.addEventListener("change", (e) => {
+                state.duckMode = e.target.checked;
+            });
+        }
     }
 
     // Default view
     renderGeneral();
 
     // Event listeners for tabs
-    general.addEventListener("click", renderGeneral);
-    accessibility.addEventListener("click", renderAccessibility);
-    about.addEventListener("click", () => { settings.innerHTML = aboutScript; });
-    themes.addEventListener("click", () => { settings.innerHTML = themeScript; });
+    if (general) general.addEventListener("click", renderGeneral);
+    if (accessibility) accessibility.addEventListener("click", renderAccessibility);
+    if (about && settings) about.addEventListener("click", () => { settings.innerHTML = aboutScript; });
+    if (themes && settings) themes.addEventListener("click", () => { settings.innerHTML = themeScript; });
 
-  
-    document.querySelector(".textex").addEventListener("click", function(){
-        if (state.duckMode){
-            document.cookie ="duck_mode=on";
-        }
-        if (state.homepage !== "standard"){
-            if (state.homepage === "wiki"){
-                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/wiki/index.html")
-            }else{
-                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/search/index.html")
+    const closeBtn = document.querySelector(".textex");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", function() {
+            if (toggle) toggle.textContent = "Open Goosettings";
+
+            if (state.duckMode) {
+                document.cookie = "duck_mode=on; path=/";
             }
-        }
-    });
+
+            if (state.homepage === "wiki") {
+                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/wiki/index.html");
+            } else if (state.homepage === "rainbowhairs") {
+                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/search/index.html");
+            } else {
+                localStorage.removeItem("homepage");
+            }
+
+            closeOrInit();
+            setTimeout(function() { window.location.reload(); }, 500);
+        });
+    }
 });
