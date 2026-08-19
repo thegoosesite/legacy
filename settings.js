@@ -25,6 +25,12 @@
     const style = document.querySelector(".settings-css");
     const footer = document.querySelector("footer");
 
+    // Call elements
+    genEl = document.querySelector('.gooset ul li:nth-child(1)');
+    assEl = document.querySelector('.gooset ul li:nth-child(2)');
+    themEl = document.querySelector('.gooset ul li:nth-child(3)');
+    aboEl = document.querySelector('.gooset ul li:nth-child(4)');
+
     function closeOrInit() {
         if (gooset) gooset.style.display = "none";
         if (style) style.disabled = true;
@@ -87,6 +93,11 @@
     const accessibilityScript = `<h2>Accessibility</h2><p><label><input id="duck-mode-check" type="checkbox" /> Enable Duck Mode</label></p>`;
 
     function renderGeneral() {
+        if (genEl) genEl.style.textDecoration = "underline";
+        if (assEl) assEl.style.textDecoration = "none";
+        if (themEl) themEl.style.textDecoration = "none";
+        if (aboEl) aboEl.style.textDecoration = "none";
+
         if (!settings) return;
         settings.innerHTML = generalScript;
         
@@ -104,6 +115,11 @@
     }
 
     function renderAccessibility() {
+        if (genEl) genEl.style.textDecoration = "none";
+        if (assEl) assEl.style.textDecoration = "underline";
+        if (themEl) themEl.style.textDecoration = "none";
+        if (aboEl) aboEl.style.textDecoration = "none";
+
         if (!settings) return;
         settings.innerHTML = accessibilityScript;
         
@@ -120,8 +136,20 @@
 
     if (general) general.addEventListener("click", renderGeneral);
     if (accessibility) accessibility.addEventListener("click", renderAccessibility);
-    if (about && settings) about.addEventListener("click", () => { settings.innerHTML = aboutScript; });
-    if (themes && settings) themes.addEventListener("click", () => { settings.innerHTML = themeScript; });
+    if (about && settings) about.addEventListener("click", () => {
+        if (genEl) genEl.style.textDecoration = "none";
+        if (assEl) assEl.style.textDecoration = "none";
+        if (themEl) themEl.style.textDecoration = "none";
+        if (aboEl) aboEl.style.textDecoration = "underline";
+        settings.innerHTML = aboutScript; 
+    });
+    if (themes && settings) themes.addEventListener("click", () => {
+        if (genEl) genEl.style.textDecoration = "none";
+        if (assEl) assEl.style.textDecoration = "none";
+        if (themEl) themEl.style.textDecoration = "underline";
+        if (aboEl) aboEl.style.textDecoration = "none";
+        settings.innerHTML = themeScript;
+    });
 
     const closeBtn = document.querySelector(".textex");
     if (closeBtn) {

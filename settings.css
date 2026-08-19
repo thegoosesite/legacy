@@ -75,6 +75,7 @@ input {
     flex-direction: column !important;
     padding-left: 16px;
     color: white !important;
+    margin:10px;
 }
 .gooset h4 .textex {
     position: absolute;
