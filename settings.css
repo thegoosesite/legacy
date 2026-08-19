@@ -77,7 +77,7 @@ input {
     color: white !important;
     margin:15px !important;
 }
-.gooset h4 .textex {
+.textex {
     position: absolute;
     top: 0;
     right: 0;
@@ -89,8 +89,8 @@ input {
 
 }
 
-.gooset h4 .textex:hover{
-    text-decoration: underline 1px white !important;
+.textex:hover{
+    text-decoration: underline !important;
 }
 .settings {
     display: flex;
