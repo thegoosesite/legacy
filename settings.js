@@ -9,7 +9,7 @@
     if (!gooset) {
         document.body.insertAdjacentHTML("beforeend", `
             <div class="gooset" style="display:none;flex-direction:row !important;">
-                <a class="textex" style="position:absolute;top:0;right:0;cursor:pointer !important;margin-right:6px;margin-top:5px;font-weight:bold;font-size:25px;">X</a>
+                <a class="textex" style="position:absolute;top:0;right:0;margin-right:6px;margin-top:5px;font-weight:bold;font-size:25px;">X</a>
                 <ul>
                     <li class="gooset-general-li">General</li>
                     <li class="gooset-accessibility-li">Accessibility</li>
