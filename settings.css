@@ -55,6 +55,7 @@ input {
 .gooset ul {
     list-style-type: none;
     padding: 0;
+    margin:7px
 }
 .gooset ul li {
     width: 101%;
