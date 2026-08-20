@@ -1,12 +1,13 @@
 (function initSettings() {
-    // Pre: cookie
+    // Pre: cookie utility
     function getCookie(name) {
         let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
         return match ? match[2] : null;
     }
+    
     // 1. Inject Stylesheet
     if (!document.querySelector(".settings-css")) {
-        document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://thegoosesite.github.io/legacy/settings.css'>");
+        document.head.insertAdjacentHTML("beforeend", "<link class='settings-css' rel='stylesheet' href='https://github.io'>");
     }
 
     // 2. Inject missing HTML container elements if they don't exist
@@ -14,7 +15,7 @@
     if (!gooset) {
         document.body.insertAdjacentHTML("beforeend", `
             <div class="gooset" style="display:none;flex-direction:row !important;margin:7px !important;">
-                <a class="textex" style="position:absolute;top:0;right:0;margin-right:6px;margin-top:5px;font-weight:bold;font-size:25px;">X</a>
+                <a class="textex" style="position:absolute;top:0;right:0;margin-right:6px;margin-top:5px;font-weight:bold;font-size:25px;user-select:none;cursor:pointer;">X</a>
                 <ul>
                     <li class="gooset-general-li">General</li>
                     <li class="gooset-accessibility-li">Accessibility</li>
@@ -30,11 +31,11 @@
     const style = document.querySelector(".settings-css");
     const footer = document.querySelector("footer");
 
-    // Call elements
-    genEl = document.querySelector('.gooset ul li:nth-child(1)');
-    assEl = document.querySelector('.gooset ul li:nth-child(2)');
-    themEl = document.querySelector('.gooset ul li:nth-child(3)');
-    aboEl = document.querySelector('.gooset ul li:nth-child(4)');
+    // Side Navigation Tabs
+    let genEl = document.querySelector('.gooset ul li:nth-child(1)');
+    let assEl = document.querySelector('.gooset ul li:nth-child(2)');
+    let themEl = document.querySelector('.gooset ul li:nth-child(3)');
+    let aboEl = document.querySelector('.gooset ul li:nth-child(4)');
 
     function closeOrInit() {
         if (gooset) gooset.style.display = "none";
@@ -43,12 +44,12 @@
 
     closeOrInit();
 
-    // 3. Inject Link into Footer
+    // 3. Inject Action Link into Footer
     if (footer && !document.querySelector(".eyecare")) {
         footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none;text-decoration:underline;cursor:pointer;' title='Toggle goosettings' class='eyecare'>Open Goosettings</a></center>");
     }
 
-    // FIX #1: Replaced semicolon with a comma
+    // Persistent runtime state
     const state = {
         contrastMode: false,
         duckMode: false,
@@ -64,7 +65,7 @@
     const themes = document.querySelector(".gooset-themes-li");
     const toggle = document.querySelector(".eyecare");
 
-    // 4. Toggle Button Handler
+    // 4. Main Panel Toggle Button Handler
     if (toggle) {
         toggle.addEventListener("click", function() {
             if (gooset.style.display === "flex") {
@@ -84,6 +85,7 @@
         });
     }
 
+    // Dynamic Panel Script Components
     const generalScript = `<h2>General</h2>
             <strong>Default Start Page</strong>
             <label for="gooset-gen-homepage">Homepage:
@@ -101,11 +103,17 @@
             <span>(!) This cannot be disabled :[</span>`;
 
     const aboutScript = "<h2>About</h2><p>The Goose Site is a project launched in May 2026 in a video game creation class. It has since led to this monstrosity of a website, with new content coming soon (including a comic!) in The Goose Site: Relaunch.</p>";
-    const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p><p><b><a class="click-tigre">→ Go to accessibility ←</a></b></p>`;
+    const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p><p><b><a class="click-tigre" style="cursor:pointer;text-decoration:underline;">→ Go to accessibility ←</a></b></p>`;
     
-    // FIX #4: Fixed the broken <label> tag below
-    const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input class="ass-check" id="duck-mode-check" name="assCheck" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i><label><input id="hi-co-check" name="assCheck" class="ass-check" type="checkbox" />Enable Vision Support</label><i>Great for gooselings who experience color blindness. Tested and proven.`;
+    const accessibilityScript = `<h2>Accessibility</h2>
+            <strong>Color Filters</strong>
+            <label><input class="ass-check" id="duck-mode-check" name="assCheck" type="checkbox" /> Enable Duck Mode</label>
+            <i>Best for gooselings who like dark mode...</i>
+            <br><br>
+            <label><input id="hi-co-check" name="assCheck" class="ass-check" type="checkbox" /> Enable Vision Support</label>
+            <i>Great for gooselings who experience color blindness. Tested and proven.</i>`;
 
+    // Tab Rendering Subroutines
     function renderGeneral() {
         if (genEl) genEl.style.textDecoration = "underline";
         if (assEl) assEl.style.textDecoration = "none";
@@ -125,7 +133,7 @@
 
         if (homepageSelect) homepageSelect.addEventListener("change", (e) => { state.homepage = e.target.value; });
         if (trackersCheck) trackersCheck.addEventListener("change", (e) => { state.trackers = e.target.checked; });
-        if (secureCheck) secureCheck.checked = state.secureconn;
+        if (secureCheck) secureCheck.addEventListener("change", (e) => { state.secureconn = e.target.checked; });
     }
 
     function renderAccessibility() {
@@ -138,28 +146,39 @@
         settings.innerHTML = accessibilityScript;
         
         const duckCheck = document.getElementById("duck-mode-check");
-        // FIX #2: Changed "hi-co-Check" to lowercase "hi-co-check" to match HTML string
         const hiCoCheck = document.getElementById("hi-co-check"); 
         
         if (duckCheck) {
             duckCheck.checked = state.duckMode;
             duckCheck.addEventListener("change", (e) => {
                 state.duckMode = e.target.checked;
+                // Radio behavior: Uncheck alternative option if checked
+                if(e.target.checked && hiCoCheck) {
+                    hiCoCheck.checked = false;
+                    state.contrastMode = false;
+                }
             });
         }
         if (hiCoCheck){
             hiCoCheck.checked = state.contrastMode;
-            // FIX #3: Changed listener target from duckCheck to hiCoCheck
             hiCoCheck.addEventListener("change", (e) => { 
                 state.contrastMode = e.target.checked;
+                // Radio behavior: Uncheck alternative option if checked
+                if(e.target.checked && duckCheck) {
+                    duckCheck.checked = false;
+                    state.duckMode = false;
+                }
             });
         }
     }
 
+    // Default Initialization Tab Execution
     renderGeneral();
 
+    // Tab Navigation Event Bindings
     if (general) general.addEventListener("click", renderGeneral);
     if (accessibility) accessibility.addEventListener("click", renderAccessibility);
+    
     if (about && settings) about.addEventListener("click", () => {
         if (genEl) genEl.style.textDecoration = "none";
         if (assEl) assEl.style.textDecoration = "none";
@@ -167,6 +186,7 @@
         if (aboEl) aboEl.style.textDecoration = "underline";
         settings.innerHTML = aboutScript; 
     });
+    
     if (themes && settings) themes.addEventListener("click", () => {
         if (genEl) genEl.style.textDecoration = "none";
         if (assEl) assEl.style.textDecoration = "none";
@@ -177,42 +197,34 @@
         if (assLnk) assLnk.addEventListener('click', renderAccessibility);
     });
 
+    // Clean Modal Window Exit Handler
     const closeBtn = document.querySelector(".textex");
     if (closeBtn) {
         closeBtn.addEventListener("click", function() {
             if (toggle) toggle.textContent = "Open Goosettings";
 
+            // Save or clear accessibility states inside cookies
             if (state.duckMode) {
                 document.cookie = "duck_mode=on; path=/";
             } else {
                 document.cookie = "duck_mode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
             if (state.contrastMode){
-                document.cookie = "high_contrast=on;path=/";
-            }else{
+                document.cookie = "high_contrast=on; path=/";
+            } else {
                 document.cookie = "high_contrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
-
+            
+            // Sync homepage routing parameters inside LocalStorage
             if (state.homepage === "wiki") {
-                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/wiki/index.html");
+                localStorage.setItem("homepage", "github.io");
             } else if (state.homepage === "rainbowhairs") {
-                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/search/index.html");
+                localStorage.setItem("homepage", "github.io");
             } else {
                 localStorage.removeItem("homepage");
             }
-
             closeOrInit();
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
-    const assChecks = document.querySelectorAll('.ass-check');
-    assChecks.forEach(assCheck => {
-        assCheck.addEventListener('change', function() {
-        if (this.checked) {
-            assCheck.forEach(aC => {
-            if (aC !== this) aC.checked = false;
-            });
-        }
-        });
-    });
 })();
