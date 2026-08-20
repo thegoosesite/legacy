@@ -76,7 +76,7 @@
                 if (getCookie("duck_mode") === "on"){
                     state.duckMode = true;
                 }
-                if (getCookie ("high_contrast") === "on"){
+                if (getCookie("high_contrast") === "on"){
                     state.contrastMode = true;
                 }
             }
