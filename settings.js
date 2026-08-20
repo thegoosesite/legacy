@@ -159,6 +159,7 @@
         if (aboEl) aboEl.style.textDecoration = "none";
         settings.innerHTML = themeScript;
         const assLnk = document.querySelector(".click-tigre");
+        if (assLnk) assLnk.addEventListener('click', renderAccessibility);
     });
 
     const closeBtn = document.querySelector(".textex");
@@ -184,5 +185,5 @@
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
-    if (assLnk) assLnk.addEventListener('click', renderAccessibility);
+    // if (assLnk) assLnk.addEventListener('click', renderAccessibility);
 })();
