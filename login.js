@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
   if (getCookie("duck_mode") === "on") {
     html.style.filter = "grayscale(67%)";
   }
+  if (getCookie("high_contrast") === "on"){
+    html.style.filter = "contrast(150%) saturate(200%)";
+  }
 
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('access_token');
