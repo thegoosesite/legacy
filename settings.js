@@ -184,9 +184,5 @@
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
-    if (assLnk) {
-        assLnk.addEventListener('click', function(){
-            renderAccessibility()
-        });
-    }
+    if (assLnk) assLnk.addEventListener('click', renderAccessibility);
 })();
