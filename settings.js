@@ -98,7 +98,7 @@
             <span>(!) This cannot be disabled :[</span>`;
 
     const aboutScript = "<h2>About</h2><p>The Goose Site is a project launched in May 2026 in a video game creation class. It has since led to this monstrosity of a website, with new content coming soon (including a comic!) in The Goose Site: Relaunch.</p>";
-    const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p><p><a class="click-tigre">Go to accessibility</a></p>`;
+    const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p><p><b><a class="click-tigre">Go to accessibility</a></b></p>`;
     const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input id="duck-mode-check" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i>`;
 
     function renderGeneral() {
