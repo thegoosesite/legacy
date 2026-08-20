@@ -183,6 +183,11 @@
             } else {
                 document.cookie = "duck_mode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
+            if (state.contrastMode){
+                document.cookie = "high_contrast=on;path=/";
+            }else{
+                document.cookie = "high_contrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
 
             if (state.homepage === "wiki") {
                 localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/wiki/index.html");
