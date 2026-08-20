@@ -29,7 +29,6 @@
 
     const style = document.querySelector(".settings-css");
     const footer = document.querySelector("footer");
-    const assLnk = document.querySelector(".click-tigre");
 
     // Call elements
     genEl = document.querySelector('.gooset ul li:nth-child(1)');
@@ -159,6 +158,7 @@
         if (themEl) themEl.style.textDecoration = "underline";
         if (aboEl) aboEl.style.textDecoration = "none";
         settings.innerHTML = themeScript;
+        const assLnk = document.querySelector(".click-tigre");
     });
 
     const closeBtn = document.querySelector(".textex");
