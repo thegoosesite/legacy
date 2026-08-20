@@ -48,8 +48,9 @@
         footer.insertAdjacentHTML("beforeend", "<center><a style='user-select:none;text-decoration:underline;cursor:pointer;' title='Toggle goosettings' class='eyecare'>Open Goosettings</a></center>");
     }
 
+    // FIX #1: Replaced semicolon with a comma
     const state = {
-        contrastMode: false;
+        contrastMode: false,
         duckMode: false,
         homepage: "standard",
         trackers: true,
@@ -83,8 +84,6 @@
         });
     }
 
-    // State object to remember settings values across tab switches
-
     const generalScript = `<h2>General</h2>
             <strong>Default Start Page</strong>
             <label for="gooset-gen-homepage">Homepage:
@@ -103,7 +102,9 @@
 
     const aboutScript = "<h2>About</h2><p>The Goose Site is a project launched in May 2026 in a video game creation class. It has since led to this monstrosity of a website, with new content coming soon (including a comic!) in The Goose Site: Relaunch.</p>";
     const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p><p><b><a class="click-tigre">→ Go to accessibility ←</a></b></p>`;
-    const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input id="duck-mode-check" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i><label<input id="hi-co-check" type="checkbox" />Enable Vision Support</label><i>Great for gooselings who experience color blindness. Tested and proven.`;
+    
+    // FIX #4: Fixed the broken <label> tag below
+    const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input id="duck-mode-check" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i><label><input id="hi-co-check" type="checkbox" />Enable Vision Support</label><i>Great for gooselings who experience color blindness. Tested and proven.`;
 
     function renderGeneral() {
         if (genEl) genEl.style.textDecoration = "underline";
@@ -124,7 +125,7 @@
 
         if (homepageSelect) homepageSelect.addEventListener("change", (e) => { state.homepage = e.target.value; });
         if (trackersCheck) trackersCheck.addEventListener("change", (e) => { state.trackers = e.target.checked; });
-        if (secureCheck) secureCheck.addEventListener("change", (e) => { state.secureconn = e.target.checked; });
+        if (secureCheck) secureCheck.checked = state.secureconn;
     }
 
     function renderAccessibility() {
@@ -137,7 +138,9 @@
         settings.innerHTML = accessibilityScript;
         
         const duckCheck = document.getElementById("duck-mode-check");
-        const hiCoCheck = document.getElementById("hi-co-Check")
+        // FIX #2: Changed "hi-co-Check" to lowercase "hi-co-check" to match HTML string
+        const hiCoCheck = document.getElementById("hi-co-check"); 
+        
         if (duckCheck) {
             duckCheck.checked = state.duckMode;
             duckCheck.addEventListener("change", (e) => {
@@ -146,7 +149,8 @@
         }
         if (hiCoCheck){
             hiCoCheck.checked = state.contrastMode;
-            duckCheck.addEventListener("change", (e) => {
+            // FIX #3: Changed listener target from duckCheck to hiCoCheck
+            hiCoCheck.addEventListener("change", (e) => { 
                 state.contrastMode = e.target.checked;
             });
         }
@@ -201,5 +205,4 @@
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
-    // if (assLnk) assLnk.addEventListener('click', renderAccessibility);
 })();
