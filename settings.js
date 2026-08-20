@@ -104,7 +104,7 @@
     const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p><p><b><a class="click-tigre">→ Go to accessibility ←</a></b></p>`;
     
     // FIX #4: Fixed the broken <label> tag below
-    const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input id="duck-mode-check" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i><label><input id="hi-co-check" type="checkbox" />Enable Vision Support</label><i>Great for gooselings who experience color blindness. Tested and proven.`;
+    const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input class="ass-check" id="duck-mode-check" name="assCheck" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i><label><input id="hi-co-check" name="assCheck" class="ass-check" type="checkbox" />Enable Vision Support</label><i>Great for gooselings who experience color blindness. Tested and proven.`;
 
     function renderGeneral() {
         if (genEl) genEl.style.textDecoration = "underline";
@@ -205,4 +205,14 @@
             setTimeout(function() { window.location.reload(); }, 500);
         });
     }
+    const assChecks = document.querySelectorAll('.ass-check');
+    assChecks.forEach(assCheck => {
+        assCheck.addEventListener('change', function() {
+        if (this.checked) {
+            assCheck.forEach(aC => {
+            if (aC !== this) aC.checked = false;
+            });
+        }
+        });
+    });
 })();
