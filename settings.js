@@ -27,7 +27,6 @@
         `);
         gooset = document.querySelector(".gooset");
     }
-
     const style = document.querySelector(".settings-css");
     const footer = document.querySelector("footer");
 
@@ -56,6 +55,10 @@
         trackers: true,
         secureconn: true
     };
+    
+    if (localStorage.getItem("homepage") !== null){
+        state.homepage = "search";
+    }
 
     const settings = document.querySelector('.settings');
     const general = document.querySelector(".gooset-general-li");
