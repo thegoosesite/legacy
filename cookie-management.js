@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   logout.addEventListener("click", () => {
     // Clear the authentication cookie
-    document.cookie = "site_access=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Strict"; 
+    document.cookie = "site_access=; need_additional_screening=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Strict"; 
     
     // Clear storage mechanisms
     window.localStorage.clear();
