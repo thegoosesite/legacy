@@ -34,7 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
   if (getCookie("high_contrast") === "on"){
     html.style.filter = "contrast(150%) saturate(200%)";
   }
-
+  if (localStorage.getItem("homepage") !== null){
+    const igloo = document.querySelector(".logo");
+    igloo.href = "https://thegoosesite.github.io/legacy/search";
+    igloo.title = "Back to your homepage! (Search page)"
+  }
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('access_token');
   const hasAccessCookie = getCookie('site_access') === 'granted';

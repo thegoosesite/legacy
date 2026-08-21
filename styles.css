@@ -86,7 +86,6 @@ smalltext{
     border-radius:12px;
     color:black;
     background-color: #9e6536; /* Bulletin color */
-    margin:12px;
     padding:7px;
     display:flex;
     flex-direction:column;

@@ -90,7 +90,6 @@
             <select name="gooset-gen-homepage" id="gooset-gen-homepage">
                 <option value="standard">Default (index.html)</option>
                 <option value="rainbowhairs">Search Page (search/index.html)</option>
-                <option value="wiki">Wiki Page (wiki/index.html)</option>
             </select>
             </label>
             <strong>Trackers</strong>
@@ -208,10 +207,8 @@
                 document.cookie = "high_contrast=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
 
-            if (state.homepage === "wiki") {
-                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/wiki/index.html");
-            } else if (state.homepage === "rainbowhairs") {
-                localStorage.setItem("homepage", "https://thegoosesite.github.io/legacy/search/index.html");
+            if (state.homepage === "search") {
+                localStorage.setItem("homepage", "search");
             } else {
                 localStorage.removeItem("homepage");
             }
