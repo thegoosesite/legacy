@@ -81,7 +81,8 @@ const codeNSI = `
   if (getCookie('site_access') === 'granted') {
     document.body.innerHTML = codeNormal;
     head.insertAdjacentHTML('beforeend', `<link rel="stylesheet" href="https://thegoosesite.github.io/legacy/cursor.css" />`);
-    redirectUrl = "http://thegoosesite.github.io"; // Gooseling Website
+    head.insertAdjacentHTML('beforeend', `<script src="https://thegoosesite.github.io/legacy/login.js"></script>`);
+    redirectUrl = "http://thegoosesite.github.io/legacy"; // Gooseling Website
   } else {
     document.body.innerHTML = codeNSI;
     head.insertAdjacentHTML('beforeend', `<link rel="icon" type="image/x-icon" href="https://thegoosesite.github.io/legacy/favicon.ico">`);
