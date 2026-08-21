@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function() {
   if (localStorage.getItem("homepage") !== null){
     const igloo = document.querySelector(".logo");
     igloo.href = "https://thegoosesite.github.io/legacy/search";
-    igloo.title = "Back to your homepage! (Search page)"
+    igloo.title = "Back to the search page..."
+    igloo.textContent = "The Goose Search";
   }
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('access_token');
