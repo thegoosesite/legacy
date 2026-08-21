@@ -1,9 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
+  let homepage;
   function getCookie(name) {
     let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     if (match) return match[2];
     return null;
   }
+  if (localStorage.getItem("homepage") !== null){
+    homepage = "https://thegoosesite.github.io/legacy/search";
+  }else{
+    homepage = "https://thegoosesite.github.io/legacy";
+  }
+  console.log(homepage)
   
   if ((getCookie('site_access') === 'granted' && window.location.pathname !== '/') || getCookie('need_additional_screening') !== 'true') {
     window.location.href = 'https://thegoosesite.github.io/legacy/pages/welcome'; 
@@ -19,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 setTimeout(() => {
                     STATUS.textContent = "Status: Passed. Redirecting...";
                     document.cookie = "site_access=granted; max-age=" + (60 * 60 * 24 * 7) + "; path=/; SameSite=Strict";
-                    window.location.replace('https://thegoosesite.github.io/legacy')
+                    window.location.replace(homepage)
                 },300)
             } else {
                 STATUS.textContent = "Status: Failed. Please try again."

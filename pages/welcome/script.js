@@ -43,7 +43,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const inputbox = document.getElementById("inputbox");
   const indicator = document.getElementById("update");
   const ex = document.querySelector("#clear");
+  let homepage;
   // disclaimer()
+  if (localStorage.getItem("homepage") !== null){
+    homepage = "https://thegoosesite.github.io/legacy/search";
+  }else{
+    homepage = "https://thegoosesite.github.io/legacy";
+  }
+  console.log(homepage);
+  
   if (!inputbox || !eye || !ex) return; 
 
   inputbox.addEventListener('input', () => {
@@ -61,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
       indicator.className = "indicator correct";
       setTimeout(() => { //
         document.cookie = "site_access=granted; max-age=" + (60 * 60 * 24 * 7) + "; path=/; SameSite=Strict";
-        window.location.replace('https://thegoosesite.github.io/legacy');
+        window.location.replace(homepage);
       }, 300);
       ex.style.display = "none";
     }else if (tokenReadEnc(currentText, 7) === "aolovsfzhpuakbjr"){
