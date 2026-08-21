@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cleanQuery = query.toLowerCase().trim();
         
         if (cleanQuery === '') {
+            searchResults.style.display="none";
             return; 
         }
         

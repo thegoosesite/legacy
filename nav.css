@@ -164,3 +164,7 @@
 .bottom-popup.active {
     transform: translateY(0);
 }
+
+body{
+    overflow-x: hidden;
+}

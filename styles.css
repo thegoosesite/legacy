@@ -28,7 +28,7 @@ body{
     /* Text styles */
     font-family: 'Comic Sans MS';
     color:white;
-    
+
     /* Flexbox */
     display: flex;
     flex-direction: column;
@@ -82,6 +82,7 @@ smalltext{
 .hello.hello2{
     max-width:62%;
 }
+
 .bulletin{
     border-radius:12px;
     color:black;

@@ -89,7 +89,7 @@
             <label for="gooset-gen-homepage">Homepage:
             <select name="gooset-gen-homepage" id="gooset-gen-homepage">
                 <option value="standard">Default (index.html)</option>
-                <option value="rainbowhairs">Search Page (search/index.html)</option>
+                <option value="search">Search Page (search/index.html)</option>
             </select>
             </label>
             <strong>Trackers</strong>
