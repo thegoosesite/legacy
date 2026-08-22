@@ -1,5 +1,5 @@
 (function initSettings() {
-    // Pre: cookie
+    // Helper: getCookie
     function getCookie(name) {
         let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
         return match ? match[2] : null;
@@ -30,7 +30,7 @@
     const style = document.querySelector(".settings-css");
     const footer = document.querySelector("footer");
 
-    // Call elements (Scoped properly)
+    // Scoped Elements
     const genEl = document.querySelector('.gooset ul li:nth-child(1)');
     const assEl = document.querySelector('.gooset ul li:nth-child(2)');
     const themEl = document.querySelector('.gooset ul li:nth-child(3)');
@@ -54,14 +54,11 @@
         homepage: "standard",
         trackers: true,
         secureconn: true,
-        fontGlobal: true
+        fontGlobal: localStorage.getItem("fontGlobal") !== null
     };
     
     if (localStorage.getItem("homepage") !== null){
         state.homepage = "search";
-    }
-    if (localStorage.getItem("fontGlobal") !== null) {
-        state.fontGlobal = true;
     }
 
     const settings = document.querySelector('.settings');
@@ -109,8 +106,7 @@
     const aboutScript = "<h2>About</h2><p>The Goose Site is a project launched in May 2026 in a video game creation class. It has since led to this monstrosity of a website, with new content coming soon (including a comic!) in The Goose Site: Relaunch.</p>";
     const themeScript = `<h2>Themes</h2><p><i>Nothing here yet</i></p><p>You can find "Duck Mode" in "Accessibility"</p><p><b><a class="click-tigre">→ Go to accessibility ←</a></b></p>`;
     
-    // Fixed closing tag on <i>
-    const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input class="ass-check" id="duck-mode-check" name="assCheck" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i><label><input id="hi-co-check" name="assCheck" class="ass-check" type="checkbox" />Enable Vision Support</label><i>Great for gooselings who experience color blindness. Tested and proven.</i><br><strong>Cross System Features</strong><label><input type="checkbox" id="gooset-font-check"></input>Use a global font</label><i>Makes the site a little less GOOSE but makes it readable on non-Microsoft devices.</i>`;
+    const accessibilityScript = `<h2>Accessibility</h2><strong>Color Filters</strong><label><input class="ass-check" id="duck-mode-check" name="assCheck" type="checkbox" /> Enable Duck Mode</label><i>Best for gooselings who like dark mode...</i><label><input id="hi-co-check" name="assCheck" class="ass-check" type="checkbox" />Enable Vision Support</label><i>Great for gooselings who experience color blindness. Tested and proven.</i><br><strong>Cross System Features</strong><label><input type="checkbox" id="gooset-font-check" /> Use a global font</label><i>Makes the site a little less GOOSE but makes it readable on non-Microsoft devices.</i>`;
 
     function renderGeneral() {
         if (genEl) genEl.style.textDecoration = "underline";
@@ -122,19 +118,15 @@
         settings.innerHTML = generalScript;
         
         const homepageSelect = document.getElementById("gooset-gen-homepage");
-        const fontCheck = document.getElementById("gooset-font-check")
         const trackersCheck = document.getElementById("trackers");
         const secureCheck = document.getElementById("secureconn");
 
         if (homepageSelect) homepageSelect.value = state.homepage;
         if (trackersCheck) trackersCheck.checked = state.trackers;
         if (secureCheck) secureCheck.checked = state.secureconn;
-        if (fontCheck) fontCheck.checked = state.fontGlobal
 
-        if (fontCheck) fontCheck.addEventListener("change", (e) => { state.fontGlobal = e.target.checked; });
         if (homepageSelect) homepageSelect.addEventListener("change", (e) => { state.homepage = e.target.value; });
         if (trackersCheck) trackersCheck.addEventListener("change", (e) => { state.trackers = e.target.checked; });
-        // Fixed listener
         if (secureCheck) secureCheck.addEventListener("change", (e) => { state.secureconn = e.target.checked; });
     }
 
@@ -149,6 +141,7 @@
         
         const duckCheck = document.getElementById("duck-mode-check");
         const hiCoCheck = document.getElementById("hi-co-check"); 
+        const fontCheck = document.getElementById("gooset-font-check");
         
         if (duckCheck) {
             duckCheck.checked = state.duckMode;
@@ -162,8 +155,14 @@
                 state.contrastMode = e.target.checked;
             });
         }
+        if (fontCheck) {
+            fontCheck.checked = state.fontGlobal;
+            fontCheck.addEventListener("change", (e) => { 
+                state.fontGlobal = e.target.checked; 
+            });
+        }
 
-        // Attached single-choice radio behavior safely inside render logic
+        // Single-choice filter toggles
         const assChecks = document.querySelectorAll('.ass-check');
         assChecks.forEach(assCheck => {
             assCheck.addEventListener('change', function() {
@@ -222,7 +221,7 @@
             } else {
                 localStorage.removeItem("homepage");
             }
-            if (state.fontGlobal === true) {
+            if (state.fontGlobal) {
                 localStorage.setItem("fontGlobal", "on");
             } else {
                 localStorage.removeItem("fontGlobal");

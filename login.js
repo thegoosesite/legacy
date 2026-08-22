@@ -36,13 +36,18 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   if (localStorage.getItem("homepage") !== null){
     const igloo = document.querySelector(".logo");
-    igloo.href = "https://thegoosesite.github.io/legacy/search";
-    igloo.title = "Back to the search page..."
-    igloo.textContent = "The Goose Search";
+    if (igloo) {
+      igloo.href = "https://thegoosesite.github.io/legacy/search";
+      igloo.title = "Back to the search page...";
+      igloo.textContent = "The Goose Search";
+    }
   }
   if (localStorage.getItem("fontGlobal") !== null){
-    document.head.insertAdjacentHTML("beforeend", "<link rel='stylesheet' href='https://thegoosesite.github.io/global.css'></link>")
+    if (!document.querySelector("link[href*='global.css']")) {
+      document.head.insertAdjacentHTML("beforeend", "<link rel='stylesheet' href='https://thegoosesite.github.io/global.css'>");
+    }
   }
+
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('access_token');
   const hasAccessCookie = getCookie('site_access') === 'granted';
