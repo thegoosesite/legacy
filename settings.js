@@ -53,11 +53,15 @@
         duckMode: false,
         homepage: "standard",
         trackers: true,
-        secureconn: true
+        secureconn: true,
+        fontGlobal: true
     };
     
     if (localStorage.getItem("homepage") !== null){
         state.homepage = "search";
+    }
+    if (localStorage.getItem("fontGlobal") !== null) {
+        state.fontGlobal = true;
     }
 
     const settings = document.querySelector('.settings');
@@ -118,13 +122,16 @@
         settings.innerHTML = generalScript;
         
         const homepageSelect = document.getElementById("gooset-gen-homepage");
+        const fontCheck = document.getElementById("gooset-font-check")
         const trackersCheck = document.getElementById("trackers");
         const secureCheck = document.getElementById("secureconn");
 
         if (homepageSelect) homepageSelect.value = state.homepage;
         if (trackersCheck) trackersCheck.checked = state.trackers;
         if (secureCheck) secureCheck.checked = state.secureconn;
+        if (fontCheck) fontCheck.checked = state.fontGlobal
 
+        if (fontCheck) fontCheck.addEventListener("change", (e) => { state.fontGlobal = e.target.value; });
         if (homepageSelect) homepageSelect.addEventListener("change", (e) => { state.homepage = e.target.value; });
         if (trackersCheck) trackersCheck.addEventListener("change", (e) => { state.trackers = e.target.checked; });
         // Fixed listener
@@ -214,6 +221,11 @@
                 localStorage.setItem("homepage", "search");
             } else {
                 localStorage.removeItem("homepage");
+            }
+            if (state.fontGlobal === true) {
+                localStorage.setItem("fontGlobal", "on");
+            } else {
+                localStorage.removeItem("fontGlobal");
             }
 
             closeOrInit();

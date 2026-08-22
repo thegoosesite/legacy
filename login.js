@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function() {
     igloo.title = "Back to the search page..."
     igloo.textContent = "The Goose Search";
   }
+  if (localStorage.getItem("fontGlobal") !== null){
+    document.head.insertAdjacentHTML("beforeend", "<link rel='stylesheet' href='https://thegoosesite.github.io/global.css'></link>")
+  }
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('access_token');
   const hasAccessCookie = getCookie('site_access') === 'granted';
