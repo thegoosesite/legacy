@@ -131,7 +131,7 @@
         if (secureCheck) secureCheck.checked = state.secureconn;
         if (fontCheck) fontCheck.checked = state.fontGlobal
 
-        if (fontCheck) fontCheck.addEventListener("change", (e) => { state.fontGlobal = e.target.value; });
+        if (fontCheck) fontCheck.addEventListener("change", (e) => { state.fontGlobal = e.target.checked; });
         if (homepageSelect) homepageSelect.addEventListener("change", (e) => { state.homepage = e.target.value; });
         if (trackersCheck) trackersCheck.addEventListener("change", (e) => { state.trackers = e.target.checked; });
         // Fixed listener
