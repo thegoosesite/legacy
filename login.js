@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   if (localStorage.getItem("fontGlobal") !== null){
     if (!document.querySelector("link[href*='global.css']")) {
-      document.head.insertAdjacentHTML("beforeend", "<link rel='stylesheet' href='https://thegoosesite.github.io/global.css'>");
+      document.head.insertAdjacentHTML("beforeend", "<link rel='stylesheet' href='https://thegoosesite.github.io/legacy/global.css'>");
     }
   }
 
