@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirect Notice</title>
+    <link rel="stylesheet" href="https://thegoosesite.github.io/src/stylesheets/main.css">
+    <style>
+        body, html{
+            padding:0;
+            margin:0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .main-box{
+              background-color:rgba(255, 255, 255, 0.5);
+              padding:15px;
+              max-width:500px;
+              margin:15px auto;
+              border-radius:4px;
+              box-shadow: 0 10px 30px rgba(51, 51, 51, 0.5);
+       }
+        .main-box h1 {
+            text-align:center;
+        }
+        body {
+            background-image: url('https://u.cubeupload.com/coolsnake0008/discontinuground.jpg') !important;
+            background: url('https://u.cubeupload.com/coolsnake0008/discontinuground.jpg');
+            background-color:transparent;
+            filter: blur(2px);
+    </style>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+          // Get the current path (e.g., "/legacy/some-page")
+          const currentPath = window.location.pathname;
+          const link = document.querySelector(".redirect");
+          redirect.href = ("https://worshipthegoose.github.io" + path);
+
+          document.querySelector('previous').addEventListener('click', function(){
+                if (document.referrer) { window.location.replace(document.referrer) } else { window.history.back() }
+          });
+      });
+        
+    </script>
+</head>
+<body>
+    <div class="main-box">
+        <h1>Redirect Notice</h1>
+        <p>The previous site was trying to redirect you to The Goose Site Legacy, a webpage with a fictionalized deity that may disturb religious visitors.</p>
+        <p>If you'd like, you could return to the <a class='redirect'>the page that you were trying to visit</a>. Otherwise, you can go back to the <a class='previous'>previous page</a>.</p>
+    </div>
+</body>
+</html>
