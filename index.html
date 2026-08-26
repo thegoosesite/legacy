@@ -6,16 +6,9 @@
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", () => {
           // Get the current path (e.g., "/legacy/some-page")
-          var currentPath = window.location.pathname;
-  
-          // Check if the path starts with "/legacy"
-          if (currentPath.startsWith('/legacy')) {
-              // Institutional redirect to the root of siteb.com
-              window.location.replace("https://siteb.com");
-          } else {
-              // Optional: Handle actual 404 errors for other paths here
-              document.write("<h1>404: Page Not Found</h1>");
-          }
+          const currentPath = window.location.pathname;
+          const path = currentPath.replace(/\/legacy(\/|$)/, '$1');
+          window.location.replace("https://https://worshipthegoose.github.io" + path)
       });
     </script>
 </head>
