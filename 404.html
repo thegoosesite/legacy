@@ -5,47 +5,72 @@
     <title>Redirect Notice</title>
     <link rel="stylesheet" href="https://thegoosesite.github.io/src/stylesheets/main.css">
     <style>
-        body, html{
-            padding:0;
-            margin:0;
+        body, html {
+            padding: 0;
+            margin: 0;
+            background-color:transparent;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        .main-box{
-              background-color:rgba(255, 255, 255, 0.5);
-              padding:15px;
-              max-width:500px;
-              margin:15px auto;
-              border-radius:4px;
-              box-shadow: 0 10px 30px rgba(51, 51, 51, 0.5);
-       }
-        .main-box h1 {
-            text-align:center;
+        .main-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            max-width: 500px;
+            margin: 15px auto;
+            border-radius: 4px;
+            position:fixed;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 10px 30px rgba(51, 51, 51, 0.5);
         }
-        body {
+        .main-box h1 {
+            text-align: center;
+        }
+        .background {
             background-image: url('https://u.cubeupload.com/coolsnake0008/discontinuground.jpg') !important;
-            background: url('https://u.cubeupload.com/coolsnake0008/discontinuground.jpg');
-            background-color:transparent;
+            background-size: cover;       /* Ensures the image fills the screen */
+            background-position: center;  /* Centers the background image */
             filter: blur(2px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;                  /* Keeps it behind text, but above body background */
+            opacity: 1;                   /* Changed from 0 to 1 so it is visible */
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+		}
     </style>
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", () => {
-          // Get the current path (e.g., "/legacy/some-page")
           const currentPath = window.location.pathname;
           const link = document.querySelector(".redirect");
-          redirect.href = ("https://worshipthegoose.github.io" + path);
+          
+          if (link) {
+              link.href = "https://worshipthegoose.github.io" + currentPath;
+          }
 
-          document.querySelector('previous').addEventListener('click', function(){
-                if (document.referrer) { window.location.replace(document.referrer) } else { window.history.back() }
-          });
+          const previousBtn = document.querySelector(".previous");
+          if (previousBtn) {
+              previousBtn.addEventListener("click", (e) => {
+                  e.preventDefault();
+                  if (document.referrer) {
+                      window.location.replace(document.referrer);
+                  } else {
+                      window.history.back();
+                  }
+              });
+          }
       });
-        
     </script>
 </head>
 <body>
+    <div class="background"></div>
     <div class="main-box">
         <h1>Redirect Notice</h1>
         <p>The previous site was trying to redirect you to The Goose Site Legacy, a webpage with a fictionalized deity that may disturb religious visitors.</p>
-        <p>If you'd like, you could return to the <a class='redirect'>the page that you were trying to visit</a>. Otherwise, you can go back to the <a class='previous'>previous page</a>.</p>
+        <p>If you'd like, you could return to <a class="redirect">the page that you were trying to visit</a>. Otherwise, you can go back to the <a class="previous" href="#">previous page</a>.</p>
     </div>
 </body>
 </html>
